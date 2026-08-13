@@ -1,0 +1,40 @@
+# Root gitignore to protect local credentials and large vendor directories
+
+# Laravel Specific
+backend/vendor/
+backend/.env
+backend/storage/*.key
+backend/storage/logs/
+backend/storage/framework/cache/
+backend/storage/framework/sessions/
+backend/storage/framework/views/
+backend/bootstrap/cache/*.php
+backend/public/storage
+
+# Next.js Specific
+frontend/node_modules/
+frontend/.next/
+frontend/out/
+frontend/.env
+frontend/.env.local
+frontend/.env.development.local
+frontend/.env.test.local
+frontend/.env.production.local
+
+# IDE & OS files
+.idea/
+.vscode/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+.DS_Store
+Thumbs.db
+
+# Temp Agent Files
+.agents/
+.claude/
+.commandcode/
+.gemini/
+*.log

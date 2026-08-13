@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Mudes.co | Digital Library Dashboard</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        .soft-bloom {
+            box-shadow: 0 12px 32px -4px rgba(47, 63, 174, 0.08);
+        }
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #dfe0ff;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #112497;
+        }
+    </style>
+<!-- Theme Configuration -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-background": "#1b1b22",
+                        "on-primary-fixed-variant": "#2939a9",
+                        "surface-container-highest": "#e3e1eb",
+                        "on-secondary-fixed": "#241a00",
+                        "on-primary": "#ffffff",
+                        "on-secondary-container": "#735a00",
+                        "inverse-primary": "#bcc2ff",
+                        "on-secondary-fixed-variant": "#584400",
+                        "primary-fixed": "#dfe0ff",
+                        "on-surface": "#1b1b22",
+                        "inverse-on-surface": "#f2eff9",
+                        "tertiary-container": "#843200",
+                        "primary-container": "#2f3fae",
+                        "secondary-fixed-dim": "#ecc246",
+                        "on-surface-variant": "#454653",
+                        "primary-fixed-dim": "#bcc2ff",
+                        "error": "#ba1a1a",
+                        "tertiary": "#5f2200",
+                        "surface-container-lowest": "#ffffff",
+                        "outline-variant": "#c6c5d5",
+                        "on-tertiary-container": "#ffa77f",
+                        "surface-bright": "#fbf8ff",
+                        "on-tertiary-fixed-variant": "#7c2e00",
+                        "surface-container-high": "#e9e7f1",
+                        "surface": "#fbf8ff",
+                        "on-tertiary": "#ffffff",
+                        "primary": "#112497",
+                        "outline": "#767684",
+                        "surface-container-low": "#f5f2fc",
+                        "surface-dim": "#dbd9e3",
+                        "surface-container": "#efecf7",
+                        "on-error-container": "#93000a",
+                        "secondary-container": "#fed255",
+                        "tertiary-fixed-dim": "#ffb695",
+                        "surface-variant": "#e3e1eb",
+                        "on-primary-container": "#afb8ff",
+                        "background": "#fbf8ff",
+                        "tertiary-fixed": "#ffdbcc",
+                        "on-tertiary-fixed": "#351000",
+                        "on-secondary": "#ffffff",
+                        "inverse-surface": "#2f3037",
+                        "on-error": "#ffffff",
+                        "on-primary-fixed": "#000c61",
+                        "secondary-fixed": "#ffe08e",
+                        "surface-tint": "#4353c1",
+                        "secondary": "#755b00",
+                        "error-container": "#ffdad6"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "2xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "container-max": "1280px",
+                        "unit": "8px",
+                        "margin-mobile": "20px",
+                        "margin-desktop": "64px",
+                        "gutter": "24px"
+                    },
+                    "fontFamily": {
+                        "display-lg": ["Plus Jakarta Sans"],
+                        "body-md": ["Plus Jakarta Sans"],
+                        "label-sm": ["Plus Jakarta Sans"],
+                        "headline-md": ["Plus Jakarta Sans"],
+                        "display-lg-mobile": ["Plus Jakarta Sans"],
+                        "body-lg": ["Plus Jakarta Sans"]
+                    },
+                    "fontSize": {
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "label-sm": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "display-lg-mobile": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-surface text-on-surface font-body-md min-h-screen selection:bg-primary-fixed selection:text-on-primary-fixed">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-surface/80 dark:bg-surface-dim/80 backdrop-blur-xl border-b border-white/30 shadow-[0_12px_32px_-4px_rgba(47,63,174,0.08)]">
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop flex justify-between items-center h-20">
+<div class="flex items-center gap-12">
+<span class="font-display-lg text-display-lg-mobile md:text-display-lg font-bold text-primary">Mudes.co</span>
+<div class="hidden md:flex gap-8 items-center">
+<a class="text-on-surface-variant hover:text-primary transition-colors font-body-md text-body-md" href="#">Home</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-body-md text-body-md" href="#">About</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-body-md text-body-md" href="#">Schedule</a>
+<a class="text-primary relative after:content-[''] after:absolute after:-bottom-2 after:left-1/2 after:-translate-x-1/2 after:w-1.5 after:h-1.5 after:bg-secondary after:rounded-full font-body-md text-body-md" href="#">Library</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-body-md text-body-md" href="#">Articles</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-body-md text-body-md" href="#">Organization</a>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="hidden lg:flex bg-surface-container-low border border-outline-variant rounded-full px-4 py-2 items-center gap-2 focus-within:ring-2 focus-within:ring-primary/20 transition-all">
+<span class="material-symbols-outlined text-outline">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-body-md w-64 text-on-surface" placeholder="Search resources..." type="text"/>
+</div>
+<button class="bg-primary text-on-primary px-6 py-2.5 rounded-full font-label-sm hover:shadow-[0_0_15px_rgba(17,36,151,0.3)] hover:scale-105 active:scale-95 transition-all">
+                    Contact
+                </button>
+</div>
+</div>
+</nav>
+<!-- Sidebar Layout Container -->
+<div class="pt-24 pb-32 max-w-container-max mx-auto flex flex-col md:flex-row gap-gutter px-margin-mobile md:px-margin-desktop">
+<!-- Sidebar Navigation -->
+<aside class="md:w-72 shrink-0 space-y-6">
+<div class="bg-white border border-outline-variant p-6 rounded-2xl soft-bloom">
+<h3 class="font-headline-md text-headline-md text-primary mb-6">Categories</h3>
+<nav class="space-y-2">
+<button class="w-full flex items-center gap-3 px-4 py-3 rounded-xl bg-primary/5 text-primary font-label-sm transition-all text-left">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">book_4</span>
+                        Study Materials
+                    </button>
+<button class="w-full flex items-center gap-3 px-4 py-3 rounded-xl text-on-surface-variant hover:bg-surface-container-low transition-all text-left font-label-sm">
+<span class="material-symbols-outlined">auto_stories</span>
+                        Islamic E-books
+                    </button>
+<button class="w-full flex items-center gap-3 px-4 py-3 rounded-xl text-on-surface-variant hover:bg-surface-container-low transition-all text-left font-label-sm">
+<span class="material-symbols-outlined">play_circle</span>
+                        Recorded Lectures
+                    </button>
+<button class="w-full flex items-center gap-3 px-4 py-3 rounded-xl text-on-surface-variant hover:bg-surface-container-low transition-all text-left font-label-sm">
+<span class="material-symbols-outlined">headset</span>
+                        Audio Learning
+                    </button>
+</nav>
+</div>
+<!-- Stats Mini Card -->
+<div class="bg-secondary-container p-6 rounded-2xl soft-bloom border border-secondary/20">
+<p class="text-on-secondary-container font-label-sm uppercase opacity-70">Personal Progress</p>
+<div class="mt-4 flex justify-between items-end">
+<div>
+<span class="text-display-lg-mobile font-bold text-on-secondary-container">12</span>
+<p class="text-body-md text-on-secondary-container">Completed</p>
+</div>
+<div class="h-16 w-16">
+<svg class="w-full h-full transform -rotate-90" viewbox="0 0 36 36">
+<circle class="text-on-secondary-container/10" cx="18" cy="18" fill="none" r="16" stroke="currentColor" stroke-width="3"></circle>
+<circle class="text-secondary" cx="18" cy="18" fill="none" r="16" stroke="currentColor" stroke-dasharray="100" stroke-dashoffset="30" stroke-linecap="round" stroke-width="3"></circle>
+</svg>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Dashboard Canvas -->
+<main class="flex-1 space-y-8">
+<!-- Header & Filter Row -->
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+<div>
+<h1 class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg text-primary">Library Catalog</h1>
+<p class="text-on-surface-variant font-body-lg">Explore curated resources for your spiritual journey.</p>
+</div>
+<div class="flex items-center gap-3">
+<span class="text-on-surface-variant font-label-sm">Sort by:</span>
+<select class="bg-white border border-outline-variant rounded-full px-4 py-2 font-label-sm focus:ring-2 focus:ring-primary/20 outline-none cursor-pointer">
+<option>Latest Updates</option>
+<option>Most Popular</option>
+<option>Alphabetical</option>
+</select>
+</div>
+</div>
+<!-- Resource Grid (Bento Style) -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-gutter">
+<!-- Card 1 -->
+<div class="group bg-white border border-outline-variant rounded-2xl overflow-hidden soft-bloom transition-all hover:-translate-y-1">
+<div class="relative h-48 overflow-hidden">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110" data-alt="A high-quality 3D render of a leather-bound Islamic book resting on an ornate wooden stand in a sunlit, minimalist study with high-end architectural details. The lighting is warm and serene, emphasizing premium textures and a calm spiritual atmosphere. The colors are dominated by rich browns, cream, and deep Royal Blue accents." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBrdmdqAr5VIIGTcs1AGeZOLtwddEiVjWKxPePAlbYEYtLzV5brfBEINBFmXwp5aAk7HWGCqPVP65OU06-WlXDZhVXzq8lK-Wr9_gBatlNPBgV2nxhAafAClC0zWsP8YxE-gM-_JF-EcwGwyz-YHhmqL5p6pPWrRgHxLpFd552t3Y2NTE8ropMJbE4BgKFeKPFTvsf4vrG9ck9RpTRNnOfaL07vniT10trRLvmw4ZQKkZdypHXJliHI')"></div>
+<div class="absolute top-4 left-4 bg-primary/90 text-on-primary text-[10px] uppercase font-bold px-3 py-1 rounded-full backdrop-blur-md">E-book</div>
+</div>
+<div class="p-6">
+<h4 class="font-headline-md text-headline-md text-on-surface mb-1 truncate">Fiqh Essentials Vol 1</h4>
+<p class="text-on-surface-variant text-body-md mb-6">Introduction to daily worship practices according to authentic sources.</p>
+<div class="flex items-center justify-between">
+<span class="text-primary font-bold">2.4 MB</span>
+<button class="flex items-center gap-2 bg-surface-container-low text-primary border border-primary/20 px-4 py-2 rounded-xl font-label-sm group-hover:bg-primary group-hover:text-on-primary transition-all">
+<span class="material-symbols-outlined text-lg">download</span>
+                                Download
+                            </button>
+</div>
+</div>
+</div>
+<!-- Card 2 (Featured Large) -->
+<div class="group bg-white border border-outline-variant rounded-2xl overflow-hidden soft-bloom transition-all hover:-translate-y-1">
+<div class="relative h-48 overflow-hidden">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110" data-alt="An artistic digital illustration of high-end studio headphones resting on a marble table next to a glowing glass tablet showing wave forms. The environment is a professional, minimalist recording studio with soft atmospheric lighting in shades of royal blue and gold. The mood is sophisticated and tech-forward." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAYvCKL6ysG44ZEhLLNo4brLMlEQuS_J74yHIRoNZDvt-ujsclZKYpcO5c6Ywnv-b3S0ZVwYoss5cQcIeWTnazskjQ2YYbg-7DyTaiLTPJxL99Nag6GTQjWt3TW6iso3oEgjdRtQegoIOfvsrFb8yHQrcVOLF3dnV6NL5-_LsnkMWSSvCWa2iWY8Ti0OZPMR_DH_xrbfY5mW_eE2Aqcplb6hjMuMUqDLPP--eiMkAFrXY3tGUOrtUPC')"></div>
+<div class="absolute top-4 left-4 bg-secondary text-on-secondary text-[10px] uppercase font-bold px-3 py-1 rounded-full">Lecture</div>
+</div>
+<div class="p-6">
+<h4 class="font-headline-md text-headline-md text-on-surface mb-1 truncate">Building Community</h4>
+<p class="text-on-surface-variant text-body-md mb-6">Recorded live at Mudes.co HQ: The future of youth activism.</p>
+<div class="flex items-center justify-between">
+<span class="text-primary font-bold">45:00 min</span>
+<button class="flex items-center gap-2 bg-surface-container-low text-primary border border-primary/20 px-4 py-2 rounded-xl font-label-sm group-hover:bg-primary group-hover:text-on-primary transition-all">
+<span class="material-symbols-outlined text-lg">play_arrow</span>
+                                Stream
+                            </button>
+</div>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="group bg-white border border-outline-variant rounded-2xl overflow-hidden soft-bloom transition-all hover:-translate-y-1">
+<div class="relative h-48 overflow-hidden">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110" data-alt="A top-down view of a minimalist desk setup featuring a sleek digital notebook, a high-end stylus, and a prayer bead. The lighting is cool and diffused, reflecting a modern light-mode interface aesthetic. The composition is clean, airy, and organized, using soft blue and white tones." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuArXLcxyBwsUIfTpUPZ9oEGLSBX-XZkVPMYEkEMNQX-rsqgvdSj-ojbqDD-xSDaUFeBKlYevkyjVUAE5I90p8DbZHA326_pRHGNL4asA2nYB3guhZNcsWlk8JFORS-Yc_4OnLl6VuxKU6BDFK4uwVDiNSWHRvfa1HSYAiIE7GE_9joF5w0dYo1D9awclXRDr_HTIU-tAaxp53NYFQd09MsWo9U6qlBvUWRMKkSXS-GgHRZ_7TT9jiFc')"></div>
+<div class="absolute top-4 left-4 bg-tertiary-container text-on-tertiary-container text-[10px] uppercase font-bold px-3 py-1 rounded-full">Study Material</div>
+</div>
+<div class="p-6">
+<h4 class="font-headline-md text-headline-md text-on-surface mb-1 truncate">Arabic Grammar Guide</h4>
+<p class="text-on-surface-variant text-body-md mb-6">A comprehensive worksheet for intermediate learners of Quranic Arabic.</p>
+<div class="flex items-center justify-between">
+<span class="text-primary font-bold">1.2 MB</span>
+<button class="flex items-center gap-2 bg-surface-container-low text-primary border border-primary/20 px-4 py-2 rounded-xl font-label-sm group-hover:bg-primary group-hover:text-on-primary transition-all">
+<span class="material-symbols-outlined text-lg">download</span>
+                                Download
+                            </button>
+</div>
+</div>
+</div>
+<!-- Card 4 -->
+<div class="group bg-white border border-outline-variant rounded-2xl overflow-hidden soft-bloom transition-all hover:-translate-y-1">
+<div class="relative h-48 overflow-hidden">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110" data-alt="A minimalist abstract image showing light-filled geometric glass panels that evoke a sense of clarity and spiritual growth. The colors are pristine white and soft royal blue, with subtle gold sparkles representing knowledge. The aesthetic is extremely clean and high-end modern." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCfqF4qQQZIzxxj14Afq34vH6n1Rje0F4w0iCL0tTaIMFrCaq7gqev_xCHwcOQOneFETCeA5ZOzmQjkpzoOWN2VChhp7ub1HetsIxqSR348nyFDr5tKfWNTU9J1XVAbrZIUL6xhUL3C8UpBf_SGC_fd37LkmvzNceL5u2y44pJUt9WCm2k30U5cWqlkyePZvm1wwd-PhF3AfC4kTHYh0d1DGHtH1bT0xc33TlFbd7vkJH9C8Zxz1eUm')"></div>
+<div class="absolute top-4 left-4 bg-primary/90 text-on-primary text-[10px] uppercase font-bold px-3 py-1 rounded-full">Audio</div>
+</div>
+<div class="p-6">
+<h4 class="font-headline-md text-headline-md text-on-surface mb-1 truncate">Morning Dhikr Series</h4>
+<p class="text-on-surface-variant text-body-md mb-6">Crystal clear audio recordings for daily spiritual fortification.</p>
+<div class="flex items-center justify-between">
+<span class="text-primary font-bold">128 kbps</span>
+<button class="flex items-center gap-2 bg-surface-container-low text-primary border border-primary/20 px-4 py-2 rounded-xl font-label-sm group-hover:bg-primary group-hover:text-on-primary transition-all">
+<span class="material-symbols-outlined text-lg">volume_up</span>
+                                Listen
+                            </button>
+</div>
+</div>
+</div>
+<!-- Card 5 -->
+<div class="group bg-white border border-outline-variant rounded-2xl overflow-hidden soft-bloom transition-all hover:-translate-y-1">
+<div class="relative h-48 overflow-hidden">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110" data-alt="Close up of a premium fountain pen writing on high-quality paper with subtle Islamic geometric patterns in the background. The scene is bright and airy, suggesting intellectual pursuit and documentation. Royal blue ink accents against a pure white background." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCb4W80OUd8TCLuy79fySVPSZdLl---WHuebYfwetQfU0QwTEMPMGhW3pn4rCjQpC8QreYJo_NYtfrmYKPylwyW9b5UuQtAefru7Im8bJkpfkYP4BWecbFKMdCAxllEAASNq5d0MqkqYnb86aNIB_6DBdJA2hM4pBOMofz42isUWZClvaL0Ww2sfkjqZubZPRMMOkDRcywGfM3A-aG6IcGdiwm2U-DoxwBD9xGio2ocAc5PxobMaCV3')"></div>
+<div class="absolute top-4 left-4 bg-secondary text-on-secondary text-[10px] uppercase font-bold px-3 py-1 rounded-full">E-book</div>
+</div>
+<div class="p-6">
+<h4 class="font-headline-md text-headline-md text-on-surface mb-1 truncate">The Youth Blueprint</h4>
+<p class="text-on-surface-variant text-body-md mb-6">Navigating modern challenges with faith-based leadership skills.</p>
+<div class="flex items-center justify-between">
+<span class="text-primary font-bold">5.8 MB</span>
+<button class="flex items-center gap-2 bg-surface-container-low text-primary border border-primary/20 px-4 py-2 rounded-xl font-label-sm group-hover:bg-primary group-hover:text-on-primary transition-all">
+<span class="material-symbols-outlined text-lg">download</span>
+                                Download
+                            </button>
+</div>
+</div>
+</div>
+<!-- Card 6 -->
+<div class="group bg-white border border-outline-variant rounded-2xl overflow-hidden soft-bloom transition-all hover:-translate-y-1">
+<div class="relative h-48 overflow-hidden">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110" data-alt="A modern library interior with glass bookshelves and minimalist furniture. Sunlight streams through tall windows, highlighting the clean white lines of the architecture. The mood is one of profound peace and high-end academic excellence." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDqUL0U6l3pCaPklrlk4-zUL-f2QL99rONUBx20RBH_twfmsZ9IdjXF40WXXUoRz5bJs_5WyvmD8P83_ZonXVMpu8WpOt81lveCRgKRiHetxxKDS_3jgd6YUZiMwW2UJmHHZJBgfY4prE0ZfNk0Iika25iF8wMcN0OPIwjUl_0XSFpP20rLZ3hVXTTU_g3tC2K-DqQxJ1WOwpnie6bgt0BXom3FaHXuWbobH1rL8DK_r8ICXBdS3ngp')"></div>
+<div class="absolute top-4 left-4 bg-tertiary-container text-on-tertiary-container text-[10px] uppercase font-bold px-3 py-1 rounded-full">Archives</div>
+</div>
+<div class="p-6">
+<h4 class="font-headline-md text-headline-md text-on-surface mb-1 truncate">Annual Report 2023</h4>
+<p class="text-on-surface-variant text-body-md mb-6">Summarizing community impact and growth over the last year.</p>
+<div class="flex items-center justify-between">
+<span class="text-primary font-bold">10.1 MB</span>
+<button class="flex items-center gap-2 bg-surface-container-low text-primary border border-primary/20 px-4 py-2 rounded-xl font-label-sm group-hover:bg-primary group-hover:text-on-primary transition-all">
+<span class="material-symbols-outlined text-lg">download</span>
+                                Download
+                            </button>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+<!-- Audio Player (Glassmorphic) -->
+<div class="fixed bottom-0 left-0 right-0 z-[60] p-margin-mobile md:p-6 pointer-events-none">
+<div class="max-w-[800px] mx-auto glass-panel rounded-full p-4 soft-bloom flex items-center gap-4 pointer-events-auto transition-transform hover:translate-y-[-4px]">
+<!-- Album Art -->
+<div class="h-12 w-12 rounded-full overflow-hidden shrink-0 border-2 border-white">
+<div class="w-full h-full bg-cover bg-center" data-alt="A minimalist waveform graphic in vibrant royal blue and metallic gold, set against a pristine white background. The visual is dynamic and clean, symbolizing high-fidelity audio playback." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuC_S-BMuZQwrPZkTSv1lkbQ3C4bwRx50pzmmnlM16NBCqC9LRIkPlAKyYMy5LXZy7y9yRqJxTEmj5Aqnxs9QyDmy8o9Fvb92PTCBurY7kPbjQwSZK_r_TXpsOAoHJDC-EnNmh8G0i1QctSToyuVGtPEyWI9h9P7lK1_5SxlBCrnTD_p5RGsqUe4sGU24hke16j8KZyzLqHnb5_a_mPoTDjqwrAhbgkUweaBnUC8hSnAT_7rpqxlvUyr')"></div>
+</div>
+<!-- Song Info -->
+<div class="hidden sm:block min-w-0 flex-1">
+<p class="font-bold text-on-surface truncate leading-tight">Building Community: Part 1</p>
+<p class="text-on-surface-variant text-xs truncate">Mudes.co Youth Series</p>
+</div>
+<!-- Controls -->
+<div class="flex items-center gap-3 md:gap-6 px-4">
+<button class="text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-2xl">skip_previous</span>
+</button>
+<button class="h-10 w-10 flex items-center justify-center bg-primary text-on-primary rounded-full hover:scale-110 active:scale-95 transition-all shadow-lg">
+<span class="material-symbols-outlined text-3xl" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+</button>
+<button class="text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-2xl">skip_next</span>
+</button>
+</div>
+<!-- Progress Bar -->
+<div class="hidden md:flex flex-1 items-center gap-3 pr-4">
+<span class="text-xs text-on-surface-variant">12:45</span>
+<div class="flex-1 h-1.5 bg-primary-fixed rounded-full relative group cursor-pointer">
+<div class="absolute left-0 top-0 h-full w-1/3 bg-primary rounded-full"></div>
+<div class="absolute left-1/3 top-1/2 -translate-y-1/2 h-3 w-3 bg-secondary rounded-full shadow-md scale-0 group-hover:scale-100 transition-transform"></div>
+</div>
+<span class="text-xs text-on-surface-variant">45:00</span>
+</div>
+<!-- Volume -->
+<div class="hidden lg:flex items-center gap-2 pr-4">
+<span class="material-symbols-outlined text-on-surface-variant">volume_up</span>
+<div class="w-20 h-1 bg-primary-fixed rounded-full overflow-hidden">
+<div class="w-2/3 h-full bg-primary"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Footer -->
+<footer class="w-full rounded-t-[40px] mt-20 bg-primary dark:bg-on-primary-fixed shadow-2xl">
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-16 grid grid-cols-1 md:grid-cols-4 gap-gutter">
+<div class="md:col-span-2">
+<span class="font-display-lg text-display-lg-mobile text-on-primary font-bold">Mudes.co</span>
+<p class="mt-4 text-primary-fixed opacity-80 max-w-sm font-body-md">Empowering the youth of Desa Condet with knowledge and faith. Our digital library is a community-driven initiative for continuous learning.</p>
+</div>
+<div class="space-y-4">
+<h4 class="text-secondary-fixed font-bold">Links</h4>
+<div class="flex flex-col gap-2">
+<a class="text-primary-fixed opacity-80 hover:opacity-100 transition-opacity font-body-md" href="#">Privacy Policy</a>
+<a class="text-primary-fixed opacity-80 hover:opacity-100 transition-opacity font-body-md" href="#">Terms of Service</a>
+<a class="text-primary-fixed opacity-80 hover:opacity-100 transition-opacity font-body-md" href="#">Community Guidelines</a>
+<a class="text-primary-fixed opacity-80 hover:opacity-100 transition-opacity font-body-md" href="#">Support</a>
+</div>
+</div>
+<div class="space-y-4">
+<h4 class="text-secondary-fixed font-bold">Newsletter</h4>
+<div class="flex gap-2">
+<input class="bg-white/10 border border-white/20 rounded-lg px-4 py-2 text-on-primary placeholder:text-white/40 focus:ring-2 focus:ring-secondary outline-none w-full" placeholder="Your email" type="email"/>
+<button class="bg-secondary text-on-secondary px-4 py-2 rounded-lg font-bold">Join</button>
+</div>
+<p class="text-[10px] text-primary-fixed opacity-60">© 2024 Mudes.co (Pemuda Pemudi LDII Desa Condet). All rights reserved.</p>
+</div>
+</div>
+</footer>
+<script>
+        // Micro-interactions for the Dashboard
+        document.querySelectorAll('aside nav button').forEach(button => {
+            button.addEventListener('click', () => {
+                // Toggle active state styling
+                document.querySelectorAll('aside nav button').forEach(btn => {
+                    btn.classList.remove('bg-primary/5', 'text-primary');
+                    btn.classList.add('text-on-surface-variant', 'hover:bg-surface-container-low');
+                    btn.querySelector('.material-symbols-outlined').style.fontVariationSettings = "'FILL' 0";
+                });
+                button.classList.add('bg-primary/5', 'text-primary');
+                button.classList.remove('text-on-surface-variant', 'hover:bg-surface-container-low');
+                button.querySelector('.material-symbols-outlined').style.fontVariationSettings = "'FILL' 1";
+            });
+        });
+
+        // Simple play/pause toggle for the minimalist player
+        const playBtn = document.querySelector('.fixed.bottom-0 button.bg-primary');
+        let isPlaying = false;
+        playBtn.addEventListener('click', () => {
+            isPlaying = !isPlaying;
+            const icon = playBtn.querySelector('.material-symbols-outlined');
+            icon.textContent = isPlaying ? 'pause' : 'play_arrow';
+            playBtn.classList.toggle('bg-secondary');
+            playBtn.classList.toggle('text-on-secondary');
+        });
+    </script>
+</body></html>

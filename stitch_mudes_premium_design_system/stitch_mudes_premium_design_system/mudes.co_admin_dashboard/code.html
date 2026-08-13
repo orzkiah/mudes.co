@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Mudes.co Admin Portal | Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                "on-surface-variant": "#404944",
+                "on-primary-fixed-variant": "#0b513d",
+                "surface": "#f8f9ff",
+                "on-surface": "#0b1c30",
+                "inverse-surface": "#213145",
+                "warning": "#F59E0B",
+                "on-secondary-fixed": "#241a00",
+                "primary-container": "#064e3b",
+                "inverse-primary": "#95d3ba",
+                "surface-tint": "#2b6954",
+                "on-tertiary": "#ffffff",
+                "tertiary-container": "#6b342d",
+                "surface-muted": "#F8FAFC",
+                "gold-light": "#F9F1D7",
+                "surface-container": "#e5eeff",
+                "surface-container-lowest": "#ffffff",
+                "surface-dim": "#cbdbf5",
+                "on-background": "#0b1c30",
+                "emerald-900": "#064E3B",
+                "secondary-fixed-dim": "#e9c349",
+                "on-tertiary-fixed-variant": "#6e372f",
+                "outline": "#707974",
+                "error-container": "#ffdad6",
+                "surface-base": "#FFFFFF",
+                "surface-bright": "#f8f9ff",
+                "emerald-600": "#059669",
+                "tertiary-fixed-dim": "#ffb4a9",
+                "on-secondary": "#ffffff",
+                "primary-fixed-dim": "#95d3ba",
+                "on-primary": "#ffffff",
+                "on-tertiary-container": "#ea9e93",
+                "on-error-container": "#93000a",
+                "on-error": "#ffffff",
+                "success": "#10B981",
+                "outline-variant": "#bfc9c3",
+                "secondary-fixed": "#ffe088",
+                "inverse-on-surface": "#eaf1ff",
+                "surface-variant": "#d3e4fe",
+                "primary": "#003527",
+                "on-primary-fixed": "#002117",
+                "tertiary-fixed": "#ffdad5",
+                "surface-container-low": "#eff4ff",
+                "on-secondary-fixed-variant": "#574500",
+                "secondary": "#735c00",
+                "secondary-container": "#fed65b",
+                "tertiary": "#4f1f19",
+                "gold-accent": "#D4AF37",
+                "on-secondary-container": "#745c00",
+                "on-primary-container": "#80bea6",
+                "surface-container-high": "#dce9ff",
+                "surface-container-highest": "#d3e4fe",
+                "primary-fixed": "#b0f0d6",
+                "on-tertiary-fixed": "#380d08",
+                "background": "#f8f9ff",
+                "error": "#EF4444"
+            },
+            "borderRadius": {
+                "DEFAULT": "8px",
+                "lg": "16px",
+                "xl": "24px",
+                "full": "9999px"
+            },
+            "spacing": {
+                "unit": "4px",
+                "md": "16px",
+                "3xl": "64px",
+                "lg": "24px",
+                "container-max": "1280px",
+                "gutter": "24px",
+                "xs": "4px",
+                "xl": "32px",
+                "2xl": "48px",
+                "sm": "8px"
+            },
+            "fontFamily": {
+                "headline-sm": ["Hanken Grotesk"],
+                "body-md": ["Inter"],
+                "label-md": ["Inter"],
+                "label-sm": ["Inter"],
+                "body-sm": ["Inter"],
+                "display-lg-mobile": ["Hanken Grotesk"],
+                "headline-md": ["Hanken Grotesk"],
+                "display-lg": ["Hanken Grotesk"],
+                "body-lg": ["Inter"]
+            }
+          }
+        }
+      }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; }
+        .font-hanken { font-family: 'Hanken Grotesk', sans-serif; }
+        
+        .premium-shadow {
+            box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05), 0px 10px 15px -3px rgba(0, 0, 0, 0.03);
+        }
+        
+        .glass-card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(226, 232, 240, 0.5);
+        }
+
+        .marquee-container {
+            overflow: hidden;
+            white-space: nowrap;
+        }
+        
+        .marquee-content {
+            display: inline-block;
+            animation: marquee 30s linear infinite;
+        }
+
+        @keyframes marquee {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface">
+<!-- Sidebar Navigation -->
+<aside class="fixed left-0 top-0 h-full w-[240px] bg-surface-container-lowest border-r border-outline-variant z-50 flex flex-col py-md px-sm premium-shadow">
+<div class="px-md mb-xl flex items-center gap-sm">
+<img alt="Mudes.co Logo" class="w-10 h-10 rounded-lg object-contain" src="https://lh3.googleusercontent.com/aida/AP1WRLtm4lg1tgbv2h0yAi2Rg32vku129yb6YqlHWinIfpMTOJjFAtm3ge9tuduI7ve9DKB7cx1rb1beJvOALkXtFaiyjltlXNllVEyPO7XzNSFlPkv1bxBQEVXOGnRMgZ-KAqVItJd3JSiDR2vtavlmI2l0nMocx6iLvW0RcgOl2kf5pL1kKiDlMuXic-zz3ZwjhqYL7HGUkNjPVRKINpW_m6mSxOhLryhuHYvrKa0MsJid6OSISJ46bQTyOc4"/>
+<div>
+<h1 class="font-headline-sm text-headline-sm text-primary font-bold leading-tight">Mudes.co</h1>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Community Admin</p>
+</div>
+</div>
+<nav class="flex-grow space-y-1">
+<!-- Active Tab -->
+<a class="flex items-center gap-md px-md py-sm rounded-lg text-primary font-bold border-r-4 border-primary bg-primary-container/10 transition-transform active:scale-[0.98]" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">dashboard</span>
+<span class="font-body-md text-body-md">Dashboard</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm rounded-lg text-on-surface-variant hover:bg-gold-light hover:text-primary transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">analytics</span>
+<span class="font-body-md text-body-md">Analytics</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm rounded-lg text-on-surface-variant hover:bg-gold-light hover:text-primary transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="font-body-md text-body-md">Community</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm rounded-lg text-on-surface-variant hover:bg-gold-light hover:text-primary transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">library_books</span>
+<span class="font-body-md text-body-md">Resources</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm rounded-lg text-on-surface-variant hover:bg-gold-light hover:text-primary transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">payments</span>
+<span class="font-body-md text-body-md">Financials</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm rounded-lg text-on-surface-variant hover:bg-gold-light hover:text-primary transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">assessment</span>
+<span class="font-body-md text-body-md">Reports</span>
+</a>
+</nav>
+<div class="mt-auto space-y-1 border-t border-outline-variant pt-md">
+<button class="w-full bg-primary text-white font-label-md py-sm rounded-lg mb-md hover:opacity-90 transition-opacity">
+                Support Community
+            </button>
+<a class="flex items-center gap-md px-md py-sm rounded-lg text-on-surface-variant hover:bg-gold-light transition-colors" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-body-md text-body-md">Settings</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm rounded-lg text-on-surface-variant hover:bg-gold-light transition-colors" href="#">
+<span class="material-symbols-outlined">logout</span>
+<span class="font-body-md text-body-md">Logout</span>
+</a>
+</div>
+</aside>
+<!-- Top Navigation Bar -->
+<header class="fixed top-0 right-0 w-[calc(100%-240px)] h-16 bg-surface-container-lowest flex items-center justify-between px-lg z-40 premium-shadow">
+<div class="flex items-center bg-surface-muted px-md py-xs rounded-full border border-outline-variant w-96">
+<span class="material-symbols-outlined text-on-surface-variant mr-sm">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-body-sm w-full outline-none" placeholder="Search members, study groups, resources..." type="text"/>
+</div>
+<div class="flex items-center gap-lg">
+<div class="flex items-center gap-md">
+<button class="relative p-xs text-on-surface-variant hover:text-emerald-600 transition-all active:opacity-80">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-0 right-0 w-2 h-2 bg-error rounded-full"></span>
+</button>
+<button class="p-xs text-on-surface-variant hover:text-emerald-600 transition-all active:opacity-80">
+<span class="material-symbols-outlined">help</span>
+</button>
+</div>
+<div class="h-8 w-[1px] bg-outline-variant"></div>
+<div class="flex items-center gap-sm cursor-pointer group">
+<div class="text-right hidden md:block">
+<p class="font-label-md text-label-md text-on-surface group-hover:text-primary transition-colors">Amir Al-Amin</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Primary Admin</p>
+</div>
+<div class="w-10 h-10 rounded-full bg-gold-light flex items-center justify-center border-2 border-white overflow-hidden premium-shadow">
+<img class="w-full h-full object-cover" data-alt="A professional headshot of a young Muslim man with a friendly expression, wearing a minimalist modern outfit, set against a clean studio background with soft emerald and gold lighting, high-end photography style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB86-5zHhl1QKJ5yNwDA1HBoPbXG4cCExVJZacYwE-cJI-vIFDvfzNnwt3Uj9IyborCfC4MCQ2woIWzcXDV-Wf-CfSMK8DW_pApCBI1IyTd3GwwxWH_D3f03sv--JZlDQoMhimj6js7TkXPcGXdTx17Ox6FyMUF6YWGq3HjT3cUHXoMgfkCoehGy3sZHlShQB8NR_HnnAq5mHxwFqdOLlgHY2iZaQZDbLvoUK5PDoTB3VQdEgdZUOdb"/>
+</div>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="ml-[240px] pt-16 min-h-screen px-lg py-xl max-w-7xl mx-auto">
+<!-- Announcements Marquee -->
+<div class="mb-lg bg-emerald-900 text-white py-sm px-lg rounded-lg marquee-container premium-shadow relative overflow-hidden">
+<div class="absolute left-0 top-0 bottom-0 bg-emerald-900 px-md z-10 flex items-center font-bold text-gold-accent border-r border-emerald-800">
+                LATEST
+            </div>
+<div class="marquee-content font-label-md text-label-md flex gap-3xl pl-16">
+<span>🌟 New Study Group: 'Islamic Finance for Youth' starts this Friday!</span>
+<span>📢 Community Clean-up scheduled for next Sunday after Asr prayer.</span>
+<span>🕌 Mosque expansion fundraising has reached 85% of its goal!</span>
+<span>💡 Reminder: Submit your community project proposals by EOD Tuesday.</span>
+</div>
+</div>
+<!-- Welcome & Quick Actions -->
+<div class="flex flex-col md:flex-row justify-between items-end gap-lg mb-xl">
+<div>
+<h2 class="font-headline-md text-headline-md font-bold text-primary mb-xs">As-salamu alaykum, Amir</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Manage your community activities and growth statistics for today.</p>
+</div>
+<div class="flex items-center gap-md">
+<button class="flex items-center gap-xs px-md py-sm bg-gold-light text-secondary font-label-md rounded-lg hover:bg-secondary-fixed transition-colors active:scale-95">
+<span class="material-symbols-outlined text-[20px]">add_circle</span>
+                    New Announcement
+                </button>
+<button class="flex items-center gap-xs px-md py-sm bg-emerald-600 text-white font-label-md rounded-lg hover:opacity-90 transition-colors active:scale-95">
+<span class="material-symbols-outlined text-[20px]">calendar_month</span>
+                    Schedule Study
+                </button>
+<button class="flex items-center justify-center p-sm bg-surface-container text-primary rounded-lg hover:bg-surface-variant transition-colors active:scale-95">
+<span class="material-symbols-outlined">download</span>
+</button>
+</div>
+</div>
+<!-- KPI Bento Grid -->
+<section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-lg mb-xl">
+<div class="bg-surface-container-lowest p-lg rounded-lg border border-outline-variant premium-shadow flex flex-col justify-between">
+<div>
+<div class="flex justify-between items-start mb-sm">
+<span class="p-xs bg-emerald-900/10 text-emerald-900 rounded-lg material-symbols-outlined">groups</span>
+<span class="text-success font-label-sm text-label-sm flex items-center gap-xs">+12% <span class="material-symbols-outlined text-[14px]">trending_up</span></span>
+</div>
+<p class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Total Members</p>
+<h3 class="font-headline-sm text-headline-sm font-bold text-primary">1,284</h3>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-lg rounded-lg border border-outline-variant premium-shadow flex flex-col justify-between">
+<div>
+<div class="flex justify-between items-start mb-sm">
+<span class="p-xs bg-gold-light text-secondary rounded-lg material-symbols-outlined">insights</span>
+<span class="text-success font-label-sm text-label-sm flex items-center gap-xs">+5.4% <span class="material-symbols-outlined text-[14px]">trending_up</span></span>
+</div>
+<p class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Monthly Growth</p>
+<h3 class="font-headline-sm text-headline-sm font-bold text-primary">84 New</h3>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-lg rounded-lg border border-outline-variant premium-shadow flex flex-col justify-between">
+<div>
+<div class="flex justify-between items-start mb-sm">
+<span class="p-xs bg-primary-container/10 text-primary-container rounded-lg material-symbols-outlined">menu_book</span>
+<span class="text-on-surface-variant font-label-sm text-label-sm">Steady</span>
+</div>
+<p class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Study Groups</p>
+<h3 class="font-headline-sm text-headline-sm font-bold text-primary">16 Active</h3>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-lg rounded-lg border border-outline-variant premium-shadow flex flex-col justify-between">
+<div>
+<div class="flex justify-between items-start mb-sm">
+<span class="p-xs bg-error-container text-on-error-container rounded-lg material-symbols-outlined">volunteer_activism</span>
+<span class="text-success font-label-sm text-label-sm flex items-center gap-xs">+20% <span class="material-symbols-outlined text-[14px]">trending_up</span></span>
+</div>
+<p class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Impact Score</p>
+<h3 class="font-headline-sm text-headline-sm font-bold text-primary">9.2 / 10</h3>
+</div>
+</div>
+</section>
+<!-- Charts Section -->
+<section class="grid grid-cols-1 lg:grid-cols-3 gap-lg mb-xl">
+<!-- Community Engagement Area Chart -->
+<div class="lg:col-span-2 bg-surface-container-lowest p-lg rounded-lg border border-outline-variant premium-shadow">
+<div class="flex justify-between items-center mb-lg">
+<h4 class="font-headline-sm text-headline-sm text-primary">Community Engagement</h4>
+<select class="bg-surface-muted border-none text-label-sm font-label-sm rounded-lg focus:ring-primary">
+<option>Last 7 Days</option>
+<option>Last 30 Days</option>
+</select>
+</div>
+<div class="h-64 relative w-full bg-[radial-gradient(circle_at_top_right,rgba(6,78,59,0.05),transparent)]">
+<!-- SVG Chart Mockup -->
+<svg class="w-full h-full" viewbox="0 0 800 200">
+<defs>
+<lineargradient id="chartGradient" x1="0" x2="0" y1="0" y2="1">
+<stop offset="0%" stop-color="#059669" stop-opacity="0.2"></stop>
+<stop offset="100%" stop-color="#059669" stop-opacity="0"></stop>
+</lineargradient>
+</defs>
+<path d="M0 180 Q 50 140, 100 150 T 200 120 T 300 160 T 400 90 T 500 110 T 600 50 T 700 80 T 800 40 L 800 200 L 0 200 Z" fill="url(#chartGradient)"></path>
+<path d="M0 180 Q 50 140, 100 150 T 200 120 T 300 160 T 400 90 T 500 110 T 600 50 T 700 80 T 800 40" fill="none" stroke="#059669" stroke-linecap="round" stroke-width="3"></path>
+<!-- Grid lines (Subtle) -->
+<line stroke="#E2E8F0" stroke-dasharray="4" x1="0" x2="800" y1="180" y2="180"></line>
+<line stroke="#E2E8F0" stroke-dasharray="4" x1="0" x2="800" y1="120" y2="120"></line>
+<line stroke="#E2E8F0" stroke-dasharray="4" x1="0" x2="800" y1="60" y2="60"></line>
+</svg>
+<div class="flex justify-between mt-sm font-label-sm text-label-sm text-on-surface-variant">
+<span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span>
+</div>
+</div>
+</div>
+<!-- Attendance Statistics Donut -->
+<div class="bg-surface-container-lowest p-lg rounded-lg border border-outline-variant premium-shadow flex flex-col">
+<h4 class="font-headline-sm text-headline-sm text-primary mb-lg">Attendance Statistics</h4>
+<div class="flex-grow flex flex-col items-center justify-center">
+<div class="relative w-40 h-40">
+<!-- Simple CSS Donut -->
+<div class="w-full h-full rounded-full border-[12px] border-surface-container flex items-center justify-center">
+<div class="absolute inset-0 rounded-full border-[12px] border-emerald-600" style="clip-path: polygon(50% 50%, 50% 0%, 100% 0%, 100% 100%, 0% 100%, 0% 50%);"></div>
+<div class="text-center">
+<span class="block font-headline-md text-headline-md text-primary">82%</span>
+<span class="block font-label-sm text-label-sm text-on-surface-variant">Overall</span>
+</div>
+</div>
+</div>
+<div class="mt-lg w-full space-y-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-sm">
+<div class="w-3 h-3 bg-emerald-600 rounded-full"></div>
+<span class="font-body-sm text-body-sm">Actual Attendance</span>
+</div>
+<span class="font-label-md text-label-md">1,053</span>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-sm">
+<div class="w-3 h-3 bg-surface-container rounded-full"></div>
+<span class="font-body-sm text-body-sm">Target Gap</span>
+</div>
+<span class="font-label-md text-label-md">231</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Detailed Lists Section -->
+<section class="grid grid-cols-1 xl:grid-cols-2 gap-lg">
+<!-- Upcoming Study Schedule -->
+<div class="bg-surface-container-lowest p-lg rounded-lg border border-outline-variant premium-shadow">
+<div class="flex justify-between items-center mb-lg">
+<h4 class="font-headline-sm text-headline-sm text-primary">Upcoming Sessions</h4>
+<button class="text-emerald-600 font-label-md text-label-md hover:underline">View Calendar</button>
+</div>
+<div class="space-y-md">
+<div class="flex items-center p-md bg-surface-muted rounded-lg border border-transparent hover:border-emerald-600/20 transition-colors group">
+<div class="bg-emerald-900 text-white px-md py-sm rounded-lg text-center min-w-[70px]">
+<p class="font-label-sm text-label-sm uppercase leading-none">Oct</p>
+<p class="font-headline-sm text-headline-sm font-bold leading-tight">12</p>
+</div>
+<div class="ml-lg flex-grow">
+<p class="font-label-md text-label-md text-primary mb-xs">Tafsir Discussion: Surah Al-Kahf</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant flex items-center gap-xs">
+<span class="material-symbols-outlined text-[16px]">schedule</span> 18:30 - 20:00 • Led by Ustadh Omar
+                            </p>
+</div>
+<button class="opacity-0 group-hover:opacity-100 p-sm text-emerald-600 bg-emerald-900/5 rounded-full transition-opacity">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+<div class="flex items-center p-md bg-surface-muted rounded-lg border border-transparent hover:border-emerald-600/20 transition-colors group">
+<div class="bg-gold-light text-secondary px-md py-sm rounded-lg text-center min-w-[70px]">
+<p class="font-label-sm text-label-sm uppercase leading-none text-secondary">Oct</p>
+<p class="font-headline-sm text-headline-sm font-bold leading-tight">14</p>
+</div>
+<div class="ml-lg flex-grow">
+<p class="font-label-md text-label-md text-primary mb-xs">Youth Leadership Seminar</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant flex items-center gap-xs">
+<span class="material-symbols-outlined text-[16px]">schedule</span> 10:00 - 12:30 • Led by Dr. Zainab
+                            </p>
+</div>
+<button class="opacity-0 group-hover:opacity-100 p-sm text-emerald-600 bg-emerald-900/5 rounded-full transition-opacity">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+<div class="flex items-center p-md bg-surface-muted rounded-lg border border-transparent hover:border-emerald-600/20 transition-colors group">
+<div class="bg-emerald-900 text-white px-md py-sm rounded-lg text-center min-w-[70px]">
+<p class="font-label-sm text-label-sm uppercase leading-none">Oct</p>
+<p class="font-headline-sm text-headline-sm font-bold leading-tight">15</p>
+</div>
+<div class="ml-lg flex-grow">
+<p class="font-label-md text-label-md text-primary mb-xs">Evening Dhikr &amp; Reflection</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant flex items-center gap-xs">
+<span class="material-symbols-outlined text-[16px]">schedule</span> 19:45 - 20:30 • Community Led
+                            </p>
+</div>
+<button class="opacity-0 group-hover:opacity-100 p-sm text-emerald-600 bg-emerald-900/5 rounded-full transition-opacity">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Recent Activities -->
+<div class="bg-surface-container-lowest p-lg rounded-lg border border-outline-variant premium-shadow">
+<div class="flex justify-between items-center mb-lg">
+<h4 class="font-headline-sm text-headline-sm text-primary">Recent Community Actions</h4>
+<span class="p-xs bg-surface-muted rounded-full text-on-surface-variant material-symbols-outlined cursor-pointer hover:bg-surface-container transition-colors">history</span>
+</div>
+<div class="relative pl-8 space-y-lg before:absolute before:left-3 before:top-2 before:bottom-2 before:w-[2px] before:bg-outline-variant">
+<div class="relative">
+<div class="absolute -left-[30px] top-1 w-4 h-4 rounded-full bg-emerald-600 border-2 border-white"></div>
+<div>
+<p class="font-body-md text-body-md text-on-surface"><span class="font-bold">Ahmad Hassan</span> joined the <span class="text-emerald-600">Islamic Finance</span> study group.</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant mt-xs">2 hours ago</p>
+</div>
+</div>
+<div class="relative">
+<div class="absolute -left-[30px] top-1 w-4 h-4 rounded-full bg-gold-accent border-2 border-white"></div>
+<div>
+<p class="font-body-md text-body-md text-on-surface"><span class="font-bold">Fatima Ali</span> shared a new resource: <span class="italic text-primary">"Principles of Zakat in Modern Times"</span></p>
+<p class="font-label-sm text-label-sm text-on-surface-variant mt-xs">5 hours ago</p>
+</div>
+</div>
+<div class="relative">
+<div class="absolute -left-[30px] top-1 w-4 h-4 rounded-full bg-emerald-600 border-2 border-white"></div>
+<div>
+<p class="font-body-md text-body-md text-on-surface"><span class="font-bold">Zaid Omar</span> completed the <span class="text-emerald-600">Youth Leadership Module</span>.</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant mt-xs">Yesterday at 9:15 PM</p>
+</div>
+</div>
+<div class="relative">
+<div class="absolute -left-[30px] top-1 w-4 h-4 rounded-full bg-on-surface-variant border-2 border-white"></div>
+<div>
+<p class="font-body-md text-body-md text-on-surface"><span class="font-bold">Admin Amir</span> updated the community guidelines.</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant mt-xs">Yesterday at 11:30 AM</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="ml-[240px] bg-surface-container-lowest border-t border-outline-variant py-md px-lg flex flex-col md:flex-row justify-between items-center text-on-surface-variant font-label-sm text-label-sm">
+<p>© 2024 Mudes.co Admin Portal. Spiritual Clarity, Modern Utility.</p>
+<div class="flex gap-lg mt-md md:mt-0">
+<a class="hover:text-primary transition-colors" href="#">Privacy Policy</a>
+<a class="hover:text-primary transition-colors" href="#">Terms of Service</a>
+<a class="hover:text-primary transition-colors" href="#">Help Center</a>
+</div>
+</footer>
+<!-- Interactive script for chart and actions -->
+<script>
+        document.querySelectorAll('button').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const ripple = document.createElement('span');
+                ripple.classList.add('absolute', 'bg-white/30', 'rounded-full', 'animate-ping');
+                ripple.style.width = '20px';
+                ripple.style.height = '20px';
+                btn.appendChild(ripple);
+                setTimeout(() => ripple.remove(), 500);
+            });
+        });
+    </script>
+</body></html>

@@ -1,0 +1,26 @@
+<?php
+
+declare(strict_types=1);
+
+namespace App\Http\Requests;
+
+use App\Domain\Models\ActivityCategory;
+
+class ReorderActivityCategoryRequest extends BaseFormRequest
+{
+    public function authorize(): bool
+    {
+        return $this->user()?->can('update', ActivityCategory::class) ?? false;
+    }
+
+    /**
+     * @return array<string, mixed>
+     */
+    public function rules(): array
+    {
+        return [
+            'order' => ['required', 'array', 'min:1', 'max:100'],
+            'order.*' => ['uuid', 'distinct'],
+        ];
+    }
+}

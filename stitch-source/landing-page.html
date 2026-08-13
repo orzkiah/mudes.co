@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Mudes.co | Building an Excellent Generation</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-background": "#1b1b22",
+                        "on-primary-fixed-variant": "#2939a9",
+                        "surface-container-highest": "#e3e1eb",
+                        "on-secondary-fixed": "#241a00",
+                        "on-primary": "#ffffff",
+                        "on-secondary-container": "#735a00",
+                        "inverse-primary": "#bcc2ff",
+                        "on-secondary-fixed-variant": "#584400",
+                        "primary-fixed": "#dfe0ff",
+                        "on-surface": "#1b1b22",
+                        "inverse-on-surface": "#f2eff9",
+                        "tertiary-container": "#843200",
+                        "primary-container": "#2f3fae",
+                        "secondary-fixed-dim": "#ecc246",
+                        "on-surface-variant": "#454653",
+                        "primary-fixed-dim": "#bcc2ff",
+                        "error": "#ba1a1a",
+                        "tertiary": "#5f2200",
+                        "surface-container-lowest": "#ffffff",
+                        "outline-variant": "#c6c5d5",
+                        "on-tertiary-container": "#ffa77f",
+                        "surface-bright": "#fbf8ff",
+                        "on-tertiary-fixed-variant": "#7c2e00",
+                        "surface-container-high": "#e9e7f1",
+                        "surface": "#fbf8ff",
+                        "on-tertiary": "#ffffff",
+                        "primary": "#112497",
+                        "outline": "#767684",
+                        "surface-container-low": "#f5f2fc",
+                        "surface-dim": "#dbd9e3",
+                        "surface-container": "#efecf7",
+                        "on-error-container": "#93000a",
+                        "secondary-container": "#fed255",
+                        "tertiary-fixed-dim": "#ffb695",
+                        "surface-variant": "#e3e1eb",
+                        "on-primary-container": "#afb8ff",
+                        "background": "#fbf8ff",
+                        "tertiary-fixed": "#ffdbcc",
+                        "on-tertiary-fixed": "#351000",
+                        "on-secondary": "#ffffff",
+                        "inverse-surface": "#2f3037",
+                        "on-error": "#ffffff",
+                        "on-primary-fixed": "#000c61",
+                        "secondary-fixed": "#ffe08e",
+                        "surface-tint": "#4353c1",
+                        "secondary": "#755b00",
+                        "error-container": "#ffdad6"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "2xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "container-max": "1280px",
+                        "unit": "8px",
+                        "margin-mobile": "20px",
+                        "margin-desktop": "64px",
+                        "gutter": "24px"
+                    },
+                    "fontFamily": {
+                        "display-lg": ["Plus Jakarta Sans"],
+                        "body-md": ["Plus Jakarta Sans"],
+                        "label-sm": ["Plus Jakarta Sans"],
+                        "headline-md": ["Plus Jakarta Sans"],
+                        "display-lg-mobile": ["Plus Jakarta Sans"],
+                        "body-lg": ["Plus Jakarta Sans"]
+                    },
+                    "fontSize": {
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "label-sm": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "display-lg-mobile": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #fbf8ff; }
+        .glass-nav { backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255, 255, 255, 0.3); }
+        .islamic-pattern {
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 0l5 15h15l-12 9 5 15-13-10-13 10 5-15-12-9h15z' fill='%23112497' fill-opacity='0.03' fill-rule='evenodd'/%3E%3C/svg%3E");
+        }
+        .hero-gradient {
+            background: linear-gradient(to right, rgba(17, 36, 151, 0.9) 0%, rgba(17, 36, 151, 0.4) 100%);
+        }
+        .soft-bloom { box-shadow: 0 12px 32px -4px rgba(47, 63, 174, 0.08); }
+        .gold-glow:hover { box-shadow: 0 0 15px rgba(254, 210, 85, 0.4); }
+        .timeline-line { background: repeating-linear-gradient(to bottom, #e5e7eb, #e5e7eb 4px, transparent 4px, transparent 8px); }
+    </style>
+</head>
+<body class="text-on-background">
+<!-- 1. TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-surface/80 backdrop-blur-xl border-b border-white/30 transition-all duration-300 h-20 shadow-[0_12px_32px_-4px_rgba(47,63,174,0.08)]">
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop flex justify-between items-center h-full">
+<a class="font-display-lg text-display-lg-mobile md:text-display-lg font-bold text-primary" href="#">Mudes.co</a>
+<!-- Desktop Links -->
+<div class="hidden md:flex items-center space-x-8 font-body-md text-body-md">
+<a class="text-primary relative after:content-[''] after:absolute after:-bottom-2 after:left-1/2 after:-translate-x-1/2 after:w-1.5 after:h-1.5 after:bg-secondary after:rounded-full" href="#">Home</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="#">About</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="#">Schedule</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="#">Library</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="#">Articles</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="#">Organization</a>
+</div>
+<div class="flex items-center gap-4">
+<button class="hidden md:flex bg-primary text-on-primary px-6 py-2.5 rounded-lg font-body-md hover:bg-primary-container active:scale-95 transition-all">Contact</button>
+<button class="md:hidden text-primary">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</div>
+</div>
+</nav>
+<!-- 2. Hero Section -->
+<header class="relative min-h-screen flex items-center pt-20 overflow-hidden">
+<div class="absolute inset-0 z-0">
+<div class="absolute inset-0 hero-gradient z-10"></div>
+<img alt="Background Community" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCP7m7B9YUbhda2LcRPvtJg5BuL2iQLF1lPeacmH1Ni2MO0lq8AsTumYFClJz0TvG_rUmEWB6v69odIJgXw_6jek_0vGWs5DjyzaaxPQflYXspvllDVK8Xu3sEVpSDrdAjxHh3NzRImTuTSwGhRuC8p53ojyhJo99_WcbiI8CUG-mTcRwnaVXh3tgQp7SZ8-WqCW4HUnJVRDUSJH98aLpWthsDqDr4ECiyKGOPThwdVEqDq2hTDo_Ie"/>
+</div>
+<div class="relative z-20 max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop w-full">
+<div class="max-w-3xl">
+<span class="inline-block bg-secondary-container/20 text-secondary-container px-4 py-1.5 rounded-full font-label-sm text-label-sm mb-6 border border-secondary-container/30">PEMUDA PEMUDI LDII CONDET</span>
+<h1 class="font-display-lg text-display-lg-mobile md:text-display-lg text-white mb-6 leading-tight">Building an Excellent <span class="text-secondary-fixed">Generation</span> for a Better Future</h1>
+<p class="font-body-lg text-body-lg text-white/80 mb-10 max-w-xl">Empowering the youth through Quranic values, high-level professional skills, and a strong sense of community brotherhood.</p>
+<div class="flex flex-col sm:flex-row gap-4">
+<button class="bg-primary text-on-primary px-8 py-4 rounded-xl font-headline-md flex items-center justify-center gap-2 gold-glow transition-all active:scale-95">
+<span class="material-symbols-outlined">calendar_today</span>
+                        Study Schedule
+                    </button>
+<button class="border-2 border-white/30 backdrop-blur-md text-white px-8 py-4 rounded-xl font-headline-md hover:bg-white/10 transition-all active:scale-95">
+                        About Us
+                    </button>
+</div>
+</div>
+</div>
+</header>
+<!-- 3. Quick Info Bento Grid -->
+<section class="py-20 islamic-pattern">
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+<!-- Upcoming Study -->
+<div class="bg-surface p-8 rounded-2xl soft-bloom border border-outline-variant/30 hover:-translate-y-1 transition-transform group">
+<div class="w-12 h-12 rounded-xl bg-primary-fixed flex items-center justify-center text-primary mb-6 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined">auto_stories</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-primary mb-2">Upcoming Study</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-6">Tafsir Al-Quran &amp; Character Building Session.</p>
+<button class="text-primary font-bold flex items-center gap-2 hover:gap-3 transition-all">
+                        View Details <span class="material-symbols-outlined text-body-md">arrow_forward</span>
+</button>
+</div>
+<!-- Next Event -->
+<div class="bg-surface p-8 rounded-2xl soft-bloom border border-outline-variant/30 hover:-translate-y-1 transition-transform group">
+<div class="w-12 h-12 rounded-xl bg-secondary-fixed flex items-center justify-center text-on-secondary-fixed mb-6 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined">celebration</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-primary mb-2">Next Event</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-6">Youth Entrepreneurship Workshop 2024.</p>
+<button class="text-primary font-bold flex items-center gap-2 hover:gap-3 transition-all">
+                        View Events <span class="material-symbols-outlined text-body-md">arrow_forward</span>
+</button>
+</div>
+<!-- Latest Announcement -->
+<div class="bg-surface p-8 rounded-2xl soft-bloom border border-outline-variant/30 hover:-translate-y-1 transition-transform group">
+<div class="w-12 h-12 rounded-xl bg-tertiary-fixed flex items-center justify-center text-tertiary mb-6 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined">campaign</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-primary mb-2">Announcements</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-6">Registration for Qurban Volunteer is now open.</p>
+<button class="text-primary font-bold flex items-center gap-2 hover:gap-3 transition-all">
+                        Read More <span class="material-symbols-outlined text-body-md">arrow_forward</span>
+</button>
+</div>
+<!-- Digital Library -->
+<div class="bg-surface p-8 rounded-2xl soft-bloom border border-outline-variant/30 hover:-translate-y-1 transition-transform group">
+<div class="w-12 h-12 rounded-xl bg-primary-fixed-dim flex items-center justify-center text-primary mb-6 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined">library_books</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-primary mb-2">Digital Library</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-6">Access thousands of books and journals.</p>
+<button class="text-primary font-bold flex items-center gap-2 hover:gap-3 transition-all">
+                        Open Library <span class="material-symbols-outlined text-body-md">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+<!-- 4. About Section -->
+<section class="py-32 bg-white overflow-hidden">
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-start">
+<div class="relative">
+<div class="aspect-square rounded-[40px] overflow-hidden soft-bloom relative z-10">
+<img alt="About Mudes Community" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBB1BcWz-FtMegMZdfyUZ22VZalh78ZYbqvmDcVtUony7yxsHPgP2BXIrkOFVmeCjWMD59-ynWJMhbfvdtFLDMwr7hkffPGzYSqc5wGY2_07qGNtGzCuIYhU2U7296IYOkz9eiGDtpgO3MLm8ZhvUMIDTDoycYWimBilCWQ9x5OZf_jvypC9oyjH9_INeqlkNjpIh6I6Lf4rE4SfKiy-GlGoLAvXacZ3uCscq1i5fHOnsN6HWovs5RT"/>
+</div>
+<!-- Decorative Elements -->
+<div class="absolute -top-10 -left-10 w-40 h-40 bg-secondary-fixed/20 rounded-full blur-3xl"></div>
+<div class="absolute -bottom-10 -right-10 w-60 h-60 bg-primary-fixed/30 rounded-full blur-3xl"></div>
+</div>
+<div>
+<span class="text-primary font-bold tracking-widest text-label-sm mb-4 block">WHO WE ARE</span>
+<h2 class="font-display-lg text-display-lg-mobile md:text-display-lg text-on-background mb-8 leading-tight">Empowering Youth Through Faith &amp; Excellence</h2>
+<div class="space-y-12">
+<div class="relative pl-12 border-l-2 border-primary/20">
+<div class="absolute -left-[11px] top-0 w-5 h-5 bg-primary rounded-full border-4 border-white"></div>
+<h4 class="font-headline-md text-headline-md text-primary mb-2">Our History</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">Founded to nurture the potential of local youth in Condet, Mudes.co has evolved into a center for spiritual and personal development since 2004.</p>
+</div>
+<div class="relative pl-12 border-l-2 border-primary/20">
+<div class="absolute -left-[11px] top-0 w-5 h-5 bg-secondary-fixed-dim rounded-full border-4 border-white"></div>
+<h4 class="font-headline-md text-headline-md text-primary mb-2">Our Vision</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">To become a benchmark for modern Islamic youth communities globally, creating a generation that is technically proficient and spiritually rooted.</p>
+</div>
+<div class="relative pl-12 border-l-2 border-primary/20">
+<div class="absolute -left-[11px] top-0 w-5 h-5 bg-primary rounded-full border-4 border-white"></div>
+<h4 class="font-headline-md text-headline-md text-primary mb-2">Our Mission</h4>
+<ul class="list-disc list-inside font-body-md text-body-md text-on-surface-variant space-y-2">
+<li>Intensive Al-Quran &amp; Al-Hadith literacy programs.</li>
+<li>Professional character development and leadership.</li>
+<li>Community-driven socio-economic initiatives.</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- 5. Core Values -->
+<section class="py-32 bg-surface-container-low islamic-pattern">
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop text-center mb-16">
+<span class="text-primary font-bold tracking-widest text-label-sm mb-4 block">CORE PILLARS</span>
+<h2 class="font-display-lg text-display-lg-mobile md:text-display-lg text-on-background mb-6">The Values We Live By</h2>
+<div class="w-24 h-1 bg-secondary mx-auto rounded-full"></div>
+</div>
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+<!-- Value 1 -->
+<div class="bg-white p-10 rounded-[32px] soft-bloom border border-primary/5 hover:border-secondary transition-all group">
+<div class="w-16 h-16 rounded-2xl bg-primary flex items-center justify-center text-secondary-fixed mb-8 group-hover:scale-110 transition-transform shadow-lg">
+<span class="material-symbols-outlined !text-4xl" style="font-variation-settings: 'FILL' 1;">menu_book</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-primary mb-4">Quran &amp; Hadith</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Rooting every action in the timeless wisdom of Islamic scriptures.</p>
+</div>
+<!-- Value 2 -->
+<div class="bg-white p-10 rounded-[32px] soft-bloom border border-primary/5 hover:border-secondary transition-all group">
+<div class="w-16 h-16 rounded-2xl bg-primary flex items-center justify-center text-secondary-fixed mb-8 group-hover:scale-110 transition-transform shadow-lg">
+<span class="material-symbols-outlined !text-4xl" style="font-variation-settings: 'FILL' 1;">workspace_premium</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-primary mb-4">Character</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Nurturing noble character (Akhlakul Karimah) in every interaction.</p>
+</div>
+<!-- Value 3 -->
+<div class="bg-white p-10 rounded-[32px] soft-bloom border border-primary/5 hover:border-secondary transition-all group">
+<div class="w-16 h-16 rounded-2xl bg-primary flex items-center justify-center text-secondary-fixed mb-8 group-hover:scale-110 transition-transform shadow-lg">
+<span class="material-symbols-outlined !text-4xl" style="font-variation-settings: 'FILL' 1;">groups</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-primary mb-4">Brotherhood</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Building a supportive community where no one walks alone.</p>
+</div>
+<!-- Value 4 -->
+<div class="bg-white p-10 rounded-[32px] soft-bloom border border-primary/5 hover:border-secondary transition-all group">
+<div class="w-16 h-16 rounded-2xl bg-primary flex items-center justify-center text-secondary-fixed mb-8 group-hover:scale-110 transition-transform shadow-lg">
+<span class="material-symbols-outlined !text-4xl" style="font-variation-settings: 'FILL' 1;">psychology</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-primary mb-4">Professionalism</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Striving for excellence and competence in our worldly careers.</p>
+</div>
+<!-- Value 5 -->
+<div class="bg-white p-10 rounded-[32px] soft-bloom border border-primary/5 hover:border-secondary transition-all group">
+<div class="w-16 h-16 rounded-2xl bg-primary flex items-center justify-center text-secondary-fixed mb-8 group-hover:scale-110 transition-transform shadow-lg">
+<span class="material-symbols-outlined !text-4xl" style="font-variation-settings: 'FILL' 1;">history_edu</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-primary mb-4">Lifelong Learning</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Continuously seeking knowledge from the cradle to the grave.</p>
+</div>
+<!-- Value 6 -->
+<div class="bg-white p-10 rounded-[32px] soft-bloom border border-primary/5 hover:border-secondary transition-all group">
+<div class="w-16 h-16 rounded-2xl bg-primary flex items-center justify-center text-secondary-fixed mb-8 group-hover:scale-110 transition-transform shadow-lg">
+<span class="material-symbols-outlined !text-4xl" style="font-variation-settings: 'FILL' 1;">savings</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-primary mb-4">Independence</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Fostering self-reliance and entrepreneurial spirit within youth.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- 6. Statistics Section -->
+<section class="py-24 bg-primary text-on-primary">
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+<div class="grid grid-cols-2 lg:grid-cols-4 gap-12 text-center">
+<div>
+<div class="text-display-lg font-bold mb-2 text-secondary-fixed counter" data-target="1500">0</div>
+<div class="font-label-sm text-label-sm uppercase tracking-widest text-primary-fixed">Active Members</div>
+</div>
+<div>
+<div class="text-display-lg font-bold mb-2 text-secondary-fixed counter" data-target="240">0</div>
+<div class="font-label-sm text-label-sm uppercase tracking-widest text-primary-fixed">Annual Activities</div>
+</div>
+<div>
+<div class="text-display-lg font-bold mb-2 text-secondary-fixed counter" data-target="45">0</div>
+<div class="font-label-sm text-label-sm uppercase tracking-widest text-primary-fixed">Board Management</div>
+</div>
+<div>
+<div class="text-display-lg font-bold mb-2 text-secondary-fixed counter" data-target="98">0</div>
+<div class="font-label-sm text-label-sm uppercase tracking-widest text-primary-fixed">% Attendance Rate</div>
+</div>
+</div>
+</div>
+</section>
+<!-- 7. Footer -->
+<footer class="bg-on-primary-fixed text-primary-fixed w-full rounded-t-[40px] mt-20 shadow-2xl">
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-16">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-gutter">
+<div class="md:col-span-1">
+<div class="font-display-lg text-display-lg-mobile text-on-primary font-bold mb-6">Mudes.co</div>
+<p class="font-body-md text-body-md text-primary-fixed/80 mb-8 max-w-xs">Connecting the youth of LDII Desa Condet to create a legacy of faith and excellence.</p>
+<div class="flex gap-4">
+<a class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-secondary-fixed hover:text-on-secondary-fixed transition-all" href="#"><span class="material-symbols-outlined">public</span></a>
+<a class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-secondary-fixed hover:text-on-secondary-fixed transition-all" href="#"><span class="material-symbols-outlined">mail</span></a>
+<a class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-secondary-fixed hover:text-on-secondary-fixed transition-all" href="#"><span class="material-symbols-outlined">chat</span></a>
+</div>
+</div>
+<div>
+<h4 class="font-headline-md text-headline-md text-on-primary mb-6">Quick Links</h4>
+<ul class="space-y-4 font-body-md text-body-md">
+<li><a class="hover:text-secondary-fixed transition-colors" href="#">Study Schedule</a></li>
+<li><a class="hover:text-secondary-fixed transition-colors" href="#">Digital Library</a></li>
+<li><a class="hover:text-secondary-fixed transition-colors" href="#">Latest Articles</a></li>
+<li><a class="hover:text-secondary-fixed transition-colors" href="#">Organization Structure</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-headline-md text-headline-md text-on-primary mb-6">Resources</h4>
+<ul class="space-y-4 font-body-md text-body-md">
+<li><a class="hover:text-secondary-fixed transition-colors" href="#">Privacy Policy</a></li>
+<li><a class="hover:text-secondary-fixed transition-colors" href="#">Terms of Service</a></li>
+<li><a class="hover:text-secondary-fixed transition-colors" href="#">Community Guidelines</a></li>
+<li><a class="hover:text-secondary-fixed transition-colors" href="#">Support Center</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-headline-md text-headline-md text-on-primary mb-6">Contact Us</h4>
+<p class="font-body-md text-body-md text-primary-fixed/80 mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary-fixed">location_on</span>
+                        Condet, Kramat Jati, Jakarta Timur
+                    </p>
+<p class="font-body-md text-body-md text-primary-fixed/80 mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary-fixed">phone</span>
+                        +62 812-3456-7890
+                    </p>
+<p class="font-body-md text-body-md text-primary-fixed/80 flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary-fixed">mail</span>
+                        hello@mudes.co
+                    </p>
+</div>
+</div>
+<div class="mt-16 pt-8 border-t border-white/10 text-center font-body-md text-body-md opacity-60">
+                © 2024 Mudes.co (Pemuda Pemudi LDII Desa Condet). All rights reserved.
+            </div>
+</div>
+</footer>
+<script>
+        // Simple counter animation
+        const observerOptions = {
+            threshold: 0.5
+        };
+
+        const counterObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const counter = entry.target;
+                    const target = parseInt(counter.getAttribute('data-target'));
+                    const duration = 2000;
+                    const startTime = performance.now();
+                    
+                    const updateCounter = (currentTime) => {
+                        const elapsed = currentTime - startTime;
+                        const progress = Math.min(elapsed / duration, 1);
+                        const current = Math.floor(progress * target);
+                        counter.textContent = current + (target === 98 ? '%' : '+');
+                        
+                        if (progress < 1) {
+                            requestAnimationFrame(updateCounter);
+                        }
+                    };
+                    
+                    requestAnimationFrame(updateCounter);
+                    observer.unobserve(counter);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.counter').forEach(counter => {
+            counterObserver.observe(counter);
+        });
+
+        // Sticky Nav logic
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 50) {
+                nav.classList.add('shadow-xl', 'bg-surface/95');
+            } else {
+                nav.classList.remove('shadow-xl', 'bg-surface/95');
+            }
+        });
+    </script>
+</body></html>

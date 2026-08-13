@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Organization Structure - Mudes.co</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@100..900&display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-nav {
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        .org-line-v {
+            width: 2px;
+            background: linear-gradient(to bottom, #112497 0%, #112497 50%, transparent 100%);
+        }
+        .org-line-h {
+            height: 2px;
+            background: #112497;
+        }
+        .profile-card-hover {
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .profile-card-hover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px -12px rgba(47, 63, 174, 0.15);
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-background": "#1b1b22",
+                        "on-primary-fixed-variant": "#2939a9",
+                        "surface-container-highest": "#e3e1eb",
+                        "on-secondary-fixed": "#241a00",
+                        "on-primary": "#ffffff",
+                        "on-secondary-container": "#735a00",
+                        "inverse-primary": "#bcc2ff",
+                        "on-secondary-fixed-variant": "#584400",
+                        "primary-fixed": "#dfe0ff",
+                        "on-surface": "#1b1b22",
+                        "inverse-on-surface": "#f2eff9",
+                        "tertiary-container": "#843200",
+                        "primary-container": "#2f3fae",
+                        "secondary-fixed-dim": "#ecc246",
+                        "on-surface-variant": "#454653",
+                        "primary-fixed-dim": "#bcc2ff",
+                        "error": "#ba1a1a",
+                        "tertiary": "#5f2200",
+                        "surface-container-lowest": "#ffffff",
+                        "outline-variant": "#c6c5d5",
+                        "on-tertiary-container": "#ffa77f",
+                        "surface-bright": "#fbf8ff",
+                        "on-tertiary-fixed-variant": "#7c2e00",
+                        "surface-container-high": "#e9e7f1",
+                        "surface": "#fbf8ff",
+                        "on-tertiary": "#ffffff",
+                        "primary": "#112497",
+                        "outline": "#767684",
+                        "surface-container-low": "#f5f2fc",
+                        "surface-dim": "#dbd9e3",
+                        "surface-container": "#efecf7",
+                        "on-error-container": "#93000a",
+                        "secondary-container": "#fed255",
+                        "tertiary-fixed-dim": "#ffb695",
+                        "surface-variant": "#e3e1eb",
+                        "on-primary-container": "#afb8ff",
+                        "background": "#fbf8ff",
+                        "tertiary-fixed": "#ffdbcc",
+                        "on-tertiary-fixed": "#351000",
+                        "on-secondary": "#ffffff",
+                        "inverse-surface": "#2f3037",
+                        "on-error": "#ffffff",
+                        "on-primary-fixed": "#000c61",
+                        "secondary-fixed": "#ffe08e",
+                        "surface-tint": "#4353c1",
+                        "secondary": "#755b00",
+                        "error-container": "#ffdad6"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "container-max": "1280px",
+                        "unit": "8px",
+                        "margin-mobile": "20px",
+                        "margin-desktop": "64px",
+                        "gutter": "24px"
+                    },
+                    "fontFamily": {
+                        "display-lg": ["Plus Jakarta Sans"],
+                        "body-md": ["Plus Jakarta Sans"],
+                        "label-sm": ["Plus Jakarta Sans"],
+                        "headline-md": ["Plus Jakarta Sans"],
+                        "display-lg-mobile": ["Plus Jakarta Sans"],
+                        "body-lg": ["Plus Jakarta Sans"]
+                    },
+                    "fontSize": {
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "label-sm": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "display-lg-mobile": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background font-body-md overflow-x-hidden">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-surface/80 dark:bg-surface-dim/80 glass-nav border-b border-white/30 shadow-[0_12px_32px_-4px_rgba(47,63,174,0.08)]">
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop flex justify-between items-center h-20">
+<a class="font-display-lg text-display-lg-mobile md:text-display-lg font-bold text-primary dark:text-primary-fixed-dim" href="#">Mudes.co</a>
+<div class="hidden md:flex items-center gap-8">
+<a class="text-on-surface-variant dark:text-outline-variant hover:text-primary transition-colors font-body-md text-body-md" href="#">Home</a>
+<a class="text-on-surface-variant dark:text-outline-variant hover:text-primary transition-colors font-body-md text-body-md" href="#">About</a>
+<a class="text-on-surface-variant dark:text-outline-variant hover:text-primary transition-colors font-body-md text-body-md" href="#">Schedule</a>
+<a class="text-on-surface-variant dark:text-outline-variant hover:text-primary transition-colors font-body-md text-body-md" href="#">Library</a>
+<a class="text-on-surface-variant dark:text-outline-variant hover:text-primary transition-colors font-body-md text-body-md" href="#">Articles</a>
+<a class="font-body-md text-body-md text-primary dark:text-primary-fixed-dim relative after:content-[''] after:absolute after:-bottom-2 after:left-1/2 after:-translate-x-1/2 after:w-1.5 after:h-1.5 after:bg-secondary after:rounded-full" href="#">Organization</a>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 hover:bg-primary/5 rounded-lg transition-all active:scale-95">
+<span class="material-symbols-outlined text-primary">search</span>
+</button>
+<button class="hidden md:block bg-primary text-on-primary px-6 py-2.5 rounded-full font-label-sm active:scale-95 transition-transform">Contact</button>
+<button class="md:hidden p-2 text-primary">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</div>
+</div>
+</nav>
+<main class="pt-32 pb-20">
+<!-- Hero Section -->
+<section class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop mb-20 text-center">
+<span class="inline-block py-1 px-3 bg-secondary-fixed text-on-secondary-fixed rounded-full font-label-sm text-label-sm mb-6">ESTABLISHED 2024</span>
+<h1 class="font-display-lg text-display-lg-mobile md:text-display-lg text-primary mb-6">Organization Structure</h1>
+<p class="max-w-2xl mx-auto text-on-surface-variant font-body-lg text-body-lg">
+                The leadership and collaborative framework driving Mudes.co (Pemuda Pemudi LDII Desa Condet) towards a brighter, more spiritually grounded future.
+            </p>
+</section>
+<!-- Hierarchy Chart Section -->
+<section class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop mb-32 overflow-x-auto pb-10">
+<div class="min-w-[800px] flex flex-col items-center">
+<!-- Chairman -->
+<div class="relative flex flex-col items-center mb-12">
+<div class="bg-white border border-outline-variant p-6 rounded-[24px] shadow-[0_12px_32px_-4px_rgba(47,63,174,0.08)] profile-card-hover text-center w-72">
+<div class="w-20 h-20 mx-auto rounded-full mb-4 bg-primary-fixed flex items-center justify-center overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A professional studio portrait of a young male leader in a formal navy blue suit, smiling warmly with confidence. The lighting is soft and cinematic, with a clean white studio background. The overall aesthetic is professional, modern, and trustworthy, matching the royal blue and gold brand identity of Mudes.co." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDUCBl1GxCroKY6TfvDmIfk5Tt4V3A2sHSs9BVecvNcI3hrYsFIlwrcMM9mi38nVWsmCHMFNXfvOIs-nw3eHi09P5VVhYEFxE-RP6HaBZhhATFfGkcjceIXGBlNjUlXHCJjwzAAo-cdQH68Lns0QgyTaIhtk10ebqwQ9GEBqqEQbe9orQz3VkosM69FF-iFZAPrrBpxSCZNLQY_bpD8Y8I5Rjnhc4HudKqODbe5zeTyDdF737VK3amh"/>
+</div>
+<h3 class="font-headline-md text-headline-md text-primary mb-1">Ahmad Fauzi</h3>
+<p class="text-secondary font-label-sm text-label-sm uppercase tracking-wider mb-3">Chairman</p>
+<p class="text-on-surface-variant text-sm line-clamp-2 italic">"Visionary leader committed to youth empowerment and community spiritual growth."</p>
+</div>
+<div class="org-line-v h-12 w-0.5 mt-0"></div>
+</div>
+<!-- Vice & Secretary Level -->
+<div class="relative flex flex-col items-center mb-12 w-full">
+<div class="org-line-h w-[60%] absolute top-0 left-[20%]"></div>
+<div class="flex justify-between w-full max-w-4xl px-10">
+<!-- Vice Chairman -->
+<div class="flex flex-col items-center">
+<div class="org-line-v h-8"></div>
+<div class="bg-white border border-outline-variant p-5 rounded-[20px] shadow-[0_12px_32px_-4px_rgba(47,63,174,0.08)] profile-card-hover text-center w-64">
+<div class="w-16 h-16 mx-auto rounded-full mb-3 bg-secondary-fixed flex items-center justify-center overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A professional portrait of a distinguished young man with a friendly expression, wearing a smart casual blazer. The background is a soft-focus office interior with clean lines and high-key lighting. The style is premium and professional, following a minimalist corporate aesthetic in shades of royal blue and white." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCDI5UvMXwCODZVbCYrv1SxigRySlWd1Xz7KrQPcJYpknowX1DZ3CJbEJIJ0Mom2tDLvjl9wMiSq6hnGdz31asjIDGcTCO74ljjpjyv2xtzlteGdoDhLEhmX-xgsmsspebd1sjyyEfkc5BN51O4sCUOIImu1S1izdAYjgIjnhA4bwZTH4GHuPcS1F6OCKatQOiHCy_3FKWdpmIA-PUgVyo0QfLwt6UVmXckeomwHpKGPBeqq0lkIIXe"/>
+</div>
+<h4 class="font-headline-md text-[18px] text-primary mb-1">Budi Setiawan</h4>
+<p class="text-secondary font-label-sm text-[12px] uppercase tracking-wider">Vice Chairman</p>
+</div>
+</div>
+<!-- Secretary -->
+<div class="flex flex-col items-center">
+<div class="org-line-v h-8"></div>
+<div class="bg-white border border-outline-variant p-5 rounded-[20px] shadow-[0_12px_32px_-4px_rgba(47,63,174,0.08)] profile-card-hover text-center w-64">
+<div class="w-16 h-16 mx-auto rounded-full mb-3 bg-primary-fixed flex items-center justify-center overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A professional portrait of a young woman with a polite and organized look, wearing a modest yet modern professional outfit. Soft daylight lighting, minimalist background. The photography style is high-end and clean, using a palette that complements the Mudes.co brand colors of royal blue and gold." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCOqXrzH8BzRLo0VYBYMX3R_k9zG8UOoxk-15XWqmpptPMTkA7pH_8kwxd-_nlQPvz8WPa1jXkuXDqmZjVu2L7pm-5_U330TQimj7pWsPlJoBXEkQMYAStQga4FCZky1yjK3GfnM4Oftn14iWGVeYzI0LO7od8QhZRk4mhPfaW_rLqwDeY6i77z-KrMyNomP4czeeCeH-Zs63U9UMmV56SC784GeX8vNGP9-W2sqwbt07WwAALHtvGK"/>
+</div>
+<h4 class="font-headline-md text-[18px] text-primary mb-1">Siti Aminah</h4>
+<p class="text-secondary font-label-sm text-[12px] uppercase tracking-wider">Secretary General</p>
+</div>
+</div>
+<!-- Treasurer -->
+<div class="flex flex-col items-center">
+<div class="org-line-v h-8"></div>
+<div class="bg-white border border-outline-variant p-5 rounded-[20px] shadow-[0_12px_32px_-4px_rgba(47,63,174,0.08)] profile-card-hover text-center w-64">
+<div class="w-16 h-16 mx-auto rounded-full mb-3 bg-tertiary-fixed flex items-center justify-center overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A clean, professional headshot of a young man with a trustworthy and diligent expression. He is wearing a simple, high-quality white shirt. The background is a very light grey minimalist space. The image conveys financial responsibility and transparency, keeping within the professional tech-first brand identity of Mudes.co." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCrCgDXIz62n0_EZn7l5jiZnAGcdpA9y0zYfdYOhlhLd_pOn_WdnGpw3F2-oC5TQL510DPQgSWOKVnnqSfQlbUx0UCaohYZ7xQsezHsy1iYHKPdjP0ZR9OZ7ZuuPn3tQIS8-hleUydHiOjStNAe9EbShtaQE2iWBNO2DaxXnDVOm2ccOUkvXqepmj5T-gcn1gbT7YWm3_CG95Kj3AkiwZpzzfdA-Anlp4AQqUNPnxGSSen9BC2oxR6a"/>
+</div>
+<h4 class="font-headline-md text-[18px] text-primary mb-1">Dedi Kusuma</h4>
+<p class="text-secondary font-label-sm text-[12px] uppercase tracking-wider">Treasurer</p>
+</div>
+</div>
+</div>
+<div class="org-line-v h-12 w-0.5 mt-8"></div>
+</div>
+<!-- Departments Level -->
+<div class="relative w-full">
+<div class="org-line-h w-full absolute top-0"></div>
+<div class="flex justify-between w-full px-4">
+<!-- Dept 1 -->
+<div class="flex flex-col items-center flex-1">
+<div class="org-line-v h-8"></div>
+<div class="w-48 bg-surface-container-low p-4 rounded-xl text-center border border-outline-variant/30">
+<span class="material-symbols-outlined text-primary mb-2">menu_book</span>
+<h5 class="font-bold text-primary text-sm uppercase">Education</h5>
+</div>
+</div>
+<!-- Dept 2 -->
+<div class="flex flex-col items-center flex-1">
+<div class="org-line-v h-8"></div>
+<div class="w-48 bg-surface-container-low p-4 rounded-xl text-center border border-outline-variant/30">
+<span class="material-symbols-outlined text-primary mb-2">groups</span>
+<h5 class="font-bold text-primary text-sm uppercase">Youth Affairs</h5>
+</div>
+</div>
+<!-- Dept 3 -->
+<div class="flex flex-col items-center flex-1">
+<div class="org-line-v h-8"></div>
+<div class="w-48 bg-surface-container-low p-4 rounded-xl text-center border border-outline-variant/30">
+<span class="material-symbols-outlined text-primary mb-2">volunteer_activism</span>
+<h5 class="font-bold text-primary text-sm uppercase">Social Service</h5>
+</div>
+</div>
+<!-- Dept 4 -->
+<div class="flex flex-col items-center flex-1">
+<div class="org-line-v h-8"></div>
+<div class="w-48 bg-surface-container-low p-4 rounded-xl text-center border border-outline-variant/30">
+<span class="material-symbols-outlined text-primary mb-2">campaign</span>
+<h5 class="font-bold text-primary text-sm uppercase">Communication</h5>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Department Overviews (Bento Grid Style) -->
+<section class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-20 bg-surface-container-lowest rounded-[40px]">
+<div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
+<div class="max-w-xl">
+<h2 class="font-display-lg text-display-lg-mobile md:text-display-lg text-primary mb-4">Department Overviews</h2>
+<p class="text-on-surface-variant font-body-lg text-body-lg">Each department focuses on specific pillars of community development and youth excellence.</p>
+</div>
+<button class="flex items-center gap-2 text-primary font-bold hover:gap-4 transition-all">
+                    View Strategic Goals <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
+<!-- Education -->
+<div class="md:col-span-8 bg-white p-8 rounded-[32px] border border-outline-variant shadow-sm flex flex-col md:flex-row gap-8 items-center">
+<div class="w-full md:w-1/2 h-64 rounded-2xl overflow-hidden relative">
+<img class="w-full h-full object-cover" data-alt="A bright, airy library or study space with modern minimalist furniture and warm lighting. Several young adults are engaged in a collaborative learning session. The atmosphere is intellectual and serene, featuring a color palette of royal blue accents, warm wood, and crisp whites, embodying the educational focus of Mudes.co." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDjS9GXn6uA-W_x3M7lvH8gv4VvMY2hdIiy1nPbUIMriK7UP8ryGSnaRCQBc7q7w98vEYyurroDYi0jZAQ_vtDTZF0Qk6kKZ4KUpAlvw2PR0BIVEUCpzpNzz___mzUaOov8uHyBjavnMt556udAABhlJ0Clj0W1aivfY0KhxX9oohIg53JO1kSPsFsMVh7I0l5RO7BpIPCPHkyF3ebdW2VsPgXuBj4WdzL15mV5Jxzm-ZHdaPqr93Vz"/>
+</div>
+<div class="w-full md:w-1/2">
+<div class="flex items-center gap-3 mb-4">
+<div class="p-2 bg-primary/10 rounded-lg text-primary">
+<span class="material-symbols-outlined">menu_book</span>
+</div>
+<h3 class="font-headline-md text-primary">Education Department</h3>
+</div>
+<p class="text-on-surface-variant mb-6">Focusing on spiritual and academic excellence through weekly seminars, religious classes, and scholarship mentorship programs.</p>
+<ul class="space-y-2">
+<li class="flex items-center gap-2 text-sm text-on-surface font-medium">
+<span class="material-symbols-outlined text-secondary text-[18px]">check_circle</span> Weekly Qur'an Studies
+                            </li>
+<li class="flex items-center gap-2 text-sm text-on-surface font-medium">
+<span class="material-symbols-outlined text-secondary text-[18px]">check_circle</span> Leadership Workshop
+                            </li>
+</ul>
+</div>
+</div>
+<!-- Youth -->
+<div class="md:col-span-4 bg-primary p-8 rounded-[32px] text-on-primary flex flex-col justify-between">
+<div>
+<div class="p-3 bg-white/10 rounded-2xl w-fit mb-6">
+<span class="material-symbols-outlined text-white scale-125">groups</span>
+</div>
+<h3 class="font-headline-md mb-4 text-white">Youth Affairs</h3>
+<p class="opacity-80 font-body-md">Creating engaging environments for the next generation to connect, grow, and build lasting brotherhood.</p>
+</div>
+<div class="mt-8 pt-6 border-t border-white/20">
+<p class="text-[12px] uppercase tracking-widest text-secondary-fixed mb-2">ACTIVE PROGRAMS</p>
+<p class="font-bold">Mudes Coffee Talk & Sports League</p>
+</div>
+</div>
+<!-- Social -->
+<div class="md:col-span-4 bg-secondary-container p-8 rounded-[32px] text-on-secondary-container">
+<div class="p-3 bg-black/5 rounded-2xl w-fit mb-6">
+<span class="material-symbols-outlined text-primary scale-125">volunteer_activism</span>
+</div>
+<h3 class="font-headline-md mb-4">Social Service</h3>
+<p class="mb-6 opacity-90">Our bridge to the local community, organizing charity drives and environmental conservation projects.</p>
+<div class="bg-white/40 backdrop-blur-sm p-4 rounded-2xl">
+<p class="text-sm italic">"The best of people are those that are most beneficial to others."</p>
+</div>
+</div>
+<!-- Communication -->
+<div class="md:col-span-8 bg-white p-8 rounded-[32px] border border-outline-variant shadow-sm flex flex-col-reverse md:flex-row gap-8 items-center">
+<div class="w-full md:w-1/2">
+<div class="flex items-center gap-3 mb-4">
+<div class="p-2 bg-primary/10 rounded-lg text-primary">
+<span class="material-symbols-outlined">campaign</span>
+</div>
+<h3 class="font-headline-md text-primary">Communication</h3>
+</div>
+<p class="text-on-surface-variant mb-6">Managing the digital presence and internal information flow to ensure everyone stays connected and informed.</p>
+<div class="grid grid-cols-2 gap-4">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">video_camera_back</span>
+<span class="text-xs font-bold">Content Prod.</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">share</span>
+<span class="text-xs font-bold">Social Media</span>
+</div>
+</div>
+</div>
+<div class="w-full md:w-1/2 h-64 rounded-2xl overflow-hidden relative">
+<img class="w-full h-full object-cover" data-alt="A modern media studio setting with high-end cameras, podcast microphones, and soft ring lighting. The environment is sleek and tech-focused, showcasing a contemporary media workstation. The design elements are clean and minimalist, using a royal blue and white aesthetic to represent the communication wing of Mudes.co." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBg_fMp2V0_FSkcdALqMEjs2n-fYuqhhNKBqrTj23Pyo_phyFQ7emH275OW1bUDkMxqbWXJEQmCX00XjphLJkl_jTOUoXHulIiXFsh3tI68a7bcqTwZDuyKESqkCOak714WuKSLgM8XJWIETrsYVQbaYdU_NNGegIX0IHlfYzRsT3b-bf7LxoNTUZ28LeKNBOKWeMYZEGoCuMqtkOcPcAm3OAuL3SZn8phMlFLjkaJci_VfXKjO4MVt"/>
+</div>
+</div>
+</div>
+</section>
+<!-- Stats Section (Minimalist) -->
+<section class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-20">
+<div class="grid grid-cols-2 md:grid-cols-4 gap-gutter text-center">
+<div>
+<p class="text-secondary font-bold text-display-lg-mobile md:text-display-lg mb-1">12</p>
+<p class="text-on-surface-variant font-label-sm uppercase tracking-widest">Active Depts</p>
+</div>
+<div>
+<p class="text-primary font-bold text-display-lg-mobile md:text-display-lg mb-1">150+</p>
+<p class="text-on-surface-variant font-label-sm uppercase tracking-widest">Volunteers</p>
+</div>
+<div>
+<p class="text-secondary font-bold text-display-lg-mobile md:text-display-lg mb-1">24</p>
+<p class="text-on-surface-variant font-label-sm uppercase tracking-widest">Core Leaders</p>
+</div>
+<div>
+<p class="text-primary font-bold text-display-lg-mobile md:text-display-lg mb-1">100%</p>
+<p class="text-on-surface-variant font-label-sm uppercase tracking-widest">Commitment</p>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full rounded-t-[40px] mt-20 bg-primary dark:bg-on-primary-fixed shadow-2xl">
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-16 grid grid-cols-1 md:grid-cols-4 gap-gutter">
+<div class="md:col-span-2">
+<a class="font-display-lg text-display-lg-mobile text-on-primary font-bold mb-6 block" href="#">Mudes.co</a>
+<p class="text-primary-fixed opacity-80 max-w-sm mb-8">Empowering youth in Desa Condet with faith-based values and modern technological skills to create a lasting community impact.</p>
+<div class="flex gap-4">
+<a class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-secondary-fixed hover:text-on-secondary-fixed transition-all" href="#">
+<span class="material-symbols-outlined text-[20px]">public</span>
+</a>
+<a class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-secondary-fixed hover:text-on-secondary-fixed transition-all" href="#">
+<span class="material-symbols-outlined text-[20px]">mail</span>
+</a>
+<a class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-secondary-fixed hover:text-on-secondary-fixed transition-all" href="#">
+<span class="material-symbols-outlined text-[20px]">phone</span>
+</a>
+</div>
+</div>
+<div>
+<h4 class="text-secondary-fixed font-bold mb-6 font-headline-md text-[18px]">Quick Links</h4>
+<ul class="space-y-4">
+<li><a class="text-primary-fixed opacity-80 hover:opacity-100 transition-opacity font-body-md text-body-md" href="#">About Us</a></li>
+<li><a class="text-primary-fixed opacity-80 hover:opacity-100 transition-opacity font-body-md text-body-md" href="#">Our Programs</a></li>
+<li><a class="text-secondary-fixed font-bold font-body-md text-body-md" href="#">Organization</a></li>
+<li><a class="text-primary-fixed opacity-80 hover:opacity-100 transition-opacity font-body-md text-body-md" href="#">Contact</a></li>
+</ul>
+</div>
+<div>
+<h4 class="text-secondary-fixed font-bold mb-6 font-headline-md text-[18px]">Support</h4>
+<ul class="space-y-4">
+<li><a class="text-primary-fixed opacity-80 hover:opacity-100 transition-opacity font-body-md text-body-md" href="#">Privacy Policy</a></li>
+<li><a class="text-primary-fixed opacity-80 hover:opacity-100 transition-opacity font-body-md text-body-md" href="#">Terms of Service</a></li>
+<li><a class="text-primary-fixed opacity-80 hover:opacity-100 transition-opacity font-body-md text-body-md" href="#">Community Guidelines</a></li>
+<li><a class="text-primary-fixed opacity-80 hover:opacity-100 transition-opacity font-body-md text-body-md" href="#">Support</a></li>
+</ul>
+</div>
+</div>
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-8 border-t border-white/10 text-center md:text-left">
+<p class="text-primary-fixed opacity-60 text-sm">© 2024 Mudes.co (Pemuda Pemudi LDII Desa Condet). All rights reserved.</p>
+</div>
+</footer>
+<script>
+        // Simple Micro-interactions
+        document.querySelectorAll('.profile-card-hover').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                // Potential JS animation logic if needed
+            });
+        });
+
+        // Navbar Scroll Effect
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 20) {
+                nav.classList.add('bg-surface/95');
+                nav.classList.remove('bg-surface/80');
+            } else {
+                nav.classList.add('bg-surface/80');
+                nav.classList.remove('bg-surface/95');
+            }
+        });
+    </script>
+</body></html>

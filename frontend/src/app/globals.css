@@ -1,0 +1,93 @@
+@import "material-symbols/outlined.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-inter: "Inter", system-ui, sans-serif;
+  --font-hanken: "Hanken Grotesk", system-ui, sans-serif;
+}
+
+@layer base {
+  html {
+    @apply antialiased;
+  }
+  body {
+    @apply bg-[#f8f5ee] text-on-surface font-body-md;
+  }
+  .material-symbols-outlined {
+    font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+    display: inline-block;
+    vertical-align: middle;
+    line-height: 1;
+  }
+}
+
+@layer utilities {
+  .premium-shadow {
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.04), 0px 12px 24px -4px rgba(0, 0, 0, 0.06);
+  }
+  .premium-shadow:hover {
+    box-shadow: 0px 6px 12px -2px rgba(0, 0, 0, 0.08), 0px 24px 36px -6px rgba(0, 0, 0, 0.1);
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .animate-marquee {
+    animation: marquee 30s linear infinite;
+  }
+
+  /* ── 🌟 GRADIENTS & ISLAMIC MOTIF PATTERNS ── */
+  .bg-emerald-gradient {
+    background: linear-gradient(135deg, #002d20 0%, #004b36 50%, #00684b 100%);
+  }
+
+  .bg-[#f8f5ee] {
+    background-color: #f8f5ee;
+  }
+
+  .bg-islamic-pattern {
+    background-color: #003d2c;
+    background-image: 
+      radial-gradient(circle at 50% 20%, rgba(212, 175, 55, 0.15) 0%, transparent 60%),
+      radial-gradient(circle at 100% 100%, rgba(0, 100, 72, 0.4) 0%, transparent 50%),
+      radial-gradient(circle at 0% 0%, rgba(0, 60, 44, 0.5) 0%, transparent 50%),
+      url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23d4af37' fill-opacity='0.08'%3E%3Cpath d='M30 30L15 0H0v15l30 30 30-30V0H45L30 30zM0 45h15l15-15 15 15h15V30L30 0 0 30v15z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+
+  .bg-light-motif {
+    background-color: #f7f4ed;
+    background-image: 
+      radial-gradient(at 0% 0%, rgba(0, 75, 54, 0.05) 0px, transparent 50%),
+      radial-gradient(at 100% 100%, rgba(212, 175, 55, 0.08) 0px, transparent 50%),
+      url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23004b36' fill-opacity='0.035'%3E%3Cpath d='M40 40L20 0H0v20l40 40 40-40V0H60L40 40zM0 60h20l20-20 20 20h20V40L40 0 0 40v20z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+
+  .bg-gold-gradient {
+    background: linear-gradient(135deg, #d4af37 0%, #f5e08c 50%, #b8860b 100%);
+  }
+
+  .glass-card {
+    background: rgba(255, 255, 255, 0.88);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+  }
+
+  .glass-card-dark {
+    background: rgba(0, 50, 36, 0.82);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(212, 175, 55, 0.25);
+  }
+}
+
+@keyframes marquee {
+  0% { transform: translateX(100%); }
+  100% { transform: translateX(-100%); }
+}
