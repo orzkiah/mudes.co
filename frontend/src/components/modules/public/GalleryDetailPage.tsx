@@ -103,7 +103,7 @@ export function GalleryDetailPage({ id }: GalleryDetailPageProps) {
                 {gallery.photos.map((photo) => {
                   const mediaUrl = photo.url;
                   if (!mediaUrl) return null;
-                  const isVideo = isVideoUrl(mediaUrl) || photo.media?.mimeType?.startsWith("video/");
+                  const isVideo = isVideoUrl(mediaUrl);
 
                   return (
                     <div

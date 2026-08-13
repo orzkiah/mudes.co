@@ -17,7 +17,8 @@ import { api } from "@/lib/api";
 import { removeEmptyStrings } from "@/lib/form-utils";
 import { Spinner } from "@/components/ui/Spinner";
 import { getApiErrorMessage } from "@/lib/query-client";
-import type { Activity, Gallery, MediaObject } from "@/types/models";
+import type { Activity, Gallery } from "@/types/models";
+import type { MediaObject } from "@/lib/api-types";
 
 interface GalleryItemMedia extends MediaObject {
   photoId?: string; // ID row dari tabel gallery_photos di database (jika sudah ada)
@@ -43,11 +44,11 @@ export function GalleryForm({ initial, onCancel }: GalleryFormProps) {
   useEffect(() => {
     if (initial?.photos && initial.photos.length > 0) {
       const existingMedia: GalleryItemMedia[] = initial.photos.map((p) => ({
-        id: p.mediaId || p.media?.id || p.id,
+        id: p.mediaId || p.id,
         photoId: p.id,
-        url: p.url || p.media?.url || "",
+        url: p.url || "",
         name: p.caption || "File",
-        mimeType: p.media?.mimeType || "image/jpeg",
+        mimeType: "image/jpeg",
       }));
       setUploadedMediaList(existingMedia);
     }

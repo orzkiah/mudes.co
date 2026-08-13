@@ -40,4 +40,4 @@ RUN chmod -R 777 storage bootstrap/cache
 EXPOSE 8000
 
 # Start script using the dynamic PORT env variable provided by host
-CMD php artisan config:cache && php artisan route:cache && php artisan serve --host=0.0.0.0 --port=${PORT:-8000}
+CMD php artisan config:cache && php artisan route:cache && php artisan migrate --force && php artisan serve --host=0.0.0.0 --port=${PORT:-8000}

@@ -15,8 +15,8 @@ function getMediaCounts(gallery: Gallery) {
   let videoCount = 0;
 
   for (const item of gallery.photos) {
-    const url = item.url || item.media?.url || "";
-    const mime = item.media?.mimeType || "";
+    const url = item.url || "";
+    const mime = url.match(/\.(mp4|webm|mov|m4v)(\?.*)?$/i) ? "video/" : "";
     if (mime.startsWith("video/") || url.match(/\.(mp4|webm|mov|m4v)(\?.*)?$/i)) {
       videoCount++;
     } else {

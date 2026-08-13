@@ -33,7 +33,8 @@ export function OrganizationPositionForm({ initial, onSubmit, onCancel, loading 
   const activePeriodId = periods?.find((p) => p.isActive)?.id ?? periods?.[0]?.id ?? "";
 
   const { register, handleSubmit, setValue, watch, formState: { errors } } = useForm<OrganizationPositionFormValues>({
-    resolver: zodResolver(organizationPositionSchema),
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    resolver: zodResolver(organizationPositionSchema) as any,
     defaultValues: {
       organizationPeriodId: initial?.organizationPeriodId ?? "",
       memberId: initial?.member?.id ?? "",

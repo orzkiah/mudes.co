@@ -23,9 +23,7 @@ api.interceptors.request.use((config: InternalAxiosRequestConfig) => {
   if (config.data instanceof FormData) {
     delete config.headers["Content-Type"];
     delete config.headers["content-type"];
-    // @ts-expect-error – Axios method-level headers
     delete config.headers.post?.["Content-Type"];
-    // @ts-expect-error
     delete config.headers.common?.["Content-Type"];
   }
   return config;
