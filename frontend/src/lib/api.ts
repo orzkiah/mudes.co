@@ -1,7 +1,20 @@
 import axios, { type InternalAxiosRequestConfig } from "axios";
 
-export const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000/api/v1";
-export const API_ORIGIN = new URL(API_URL).origin;
+// In production, use relative URLs so requests go through Next.js rewrites (same domain = cookies work).
+// In development, hit the Laravel backend directly.
+const isServer = typeof window === "undefined";
+const isDev = process.env.NODE_ENV === "development";
+
+const BASE_API_URL = isDev
+  ? (process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000/api/v1")
+  : "/api/v1";
+
+const BASE_ORIGIN = isDev
+  ? new URL(process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000").origin
+  : "";
+
+export const API_URL = BASE_API_URL;
+export const API_ORIGIN = BASE_ORIGIN;
 
 export const api = axios.create({
   baseURL: API_URL,
@@ -31,7 +44,7 @@ api.interceptors.request.use((config: InternalAxiosRequestConfig) => {
 
 // ─── SANCTUM API (for CSRF cookie endpoint only) ─────────────────────────────
 const sanctumApi = axios.create({
-  baseURL: API_ORIGIN,
+  baseURL: isDev ? (process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000").replace(/\/api\/v1$/, "") : "",
   withCredentials: true,
   xsrfCookieName: "XSRF-TOKEN",
   xsrfHeaderName: "X-XSRF-TOKEN",
