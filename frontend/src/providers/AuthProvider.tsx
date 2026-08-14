@@ -2,7 +2,7 @@
 
 import { createContext, useContext, useCallback, ReactNode } from "react";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
-import { api, ensureCsrfCookie } from "@/lib/api";
+import { api, setAuthToken, clearAuthToken, getAuthToken } from "@/lib/api";
 import type { ApiResponse, AuthUser } from "@/lib/api-types";
 
 interface AuthContextValue {
@@ -20,10 +20,13 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const { data: user, isLoading } = useQuery<AuthUser | null>({
     queryKey: ["auth", "me"],
     queryFn: async () => {
+      const token = getAuthToken();
+      if (!token) return null;
       try {
         const response = await api.get<ApiResponse<AuthUser>>("/auth/me");
         return response.data.data;
       } catch (error) {
+        clearAuthToken();
         return null;
       }
     },
@@ -33,10 +36,10 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   const loginMutation = useMutation({
     mutationFn: async ({ email, password }: { email: string; password: string }) => {
-      await ensureCsrfCookie();
-      await api.post("/auth/login", { email, password });
-      const response = await api.get<ApiResponse<AuthUser>>("/auth/me");
-      return response.data.data;
+      const response = await api.post<ApiResponse<{ user: AuthUser; token: string }>>("/auth/token/login", { email, password });
+      const { user, token } = response.data.data;
+      setAuthToken(token);
+      return user;
     },
     onSuccess: (data) => {
       queryClient.setQueryData(["auth", "me"], data);
@@ -45,7 +48,13 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   const logoutMutation = useMutation({
     mutationFn: async () => {
-      await api.post("/auth/logout");
+      try {
+        await api.post("/auth/token/logout");
+      } catch {
+        // ignore errors during logout
+      } finally {
+        clearAuthToken();
+      }
     },
     onSuccess: () => {
       queryClient.setQueryData(["auth", "me"], null);

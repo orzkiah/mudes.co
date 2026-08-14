@@ -1,38 +1,45 @@
 import axios, { type InternalAxiosRequestConfig } from "axios";
 
-// In production, use relative URLs so requests go through Next.js rewrites (same domain = cookies work).
-// In development, hit the Laravel backend directly.
-const isServer = typeof window === "undefined";
-const isDev = process.env.NODE_ENV === "development";
+export const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000/api/v1";
 
-const BASE_API_URL = isDev
-  ? (process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000/api/v1")
-  : "/api/v1";
+// ─── Token helpers ───────────────────────────────────────────────────────────
+const TOKEN_KEY = "auth_token";
 
-const BASE_ORIGIN = isDev
-  ? new URL(process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000").origin
-  : "";
+export function getAuthToken(): string | null {
+  if (typeof window === "undefined") return null;
+  return localStorage.getItem(TOKEN_KEY);
+}
 
-export const API_URL = BASE_API_URL;
-export const API_ORIGIN = BASE_ORIGIN;
+export function setAuthToken(token: string): void {
+  if (typeof window !== "undefined") {
+    localStorage.setItem(TOKEN_KEY, token);
+  }
+}
 
+export function clearAuthToken(): void {
+  if (typeof window !== "undefined") {
+    localStorage.removeItem(TOKEN_KEY);
+  }
+}
+
+// ─── Axios instance ──────────────────────────────────────────────────────────
 export const api = axios.create({
   baseURL: API_URL,
-  withCredentials: true,
-  xsrfCookieName: "XSRF-TOKEN",
-  xsrfHeaderName: "X-XSRF-TOKEN",
-  withXSRFToken: true,
 });
 
-// ─── SET DEFAULT HEADERS MANUALLY ────────────────────────────────────────────
+// Set default headers
 api.defaults.headers.common["Accept"] = "application/json";
 api.defaults.headers.post["Content-Type"] = "application/json";
 api.defaults.headers.put["Content-Type"] = "application/json";
 api.defaults.headers.patch["Content-Type"] = "application/json";
 
-// ─── REQUEST INTERCEPTOR ─────────────────────────────────────────────────────
-// FormData uploads: remove Content-Type so browser sets multipart boundary.
+// Request interceptor: attach Bearer token + handle FormData
 api.interceptors.request.use((config: InternalAxiosRequestConfig) => {
+  const token = getAuthToken();
+  if (token) {
+    config.headers.Authorization = `Bearer ${token}`;
+  }
+
   if (config.data instanceof FormData) {
     delete config.headers["Content-Type"];
     delete config.headers["content-type"];
@@ -41,25 +48,3 @@ api.interceptors.request.use((config: InternalAxiosRequestConfig) => {
   }
   return config;
 });
-
-// ─── SANCTUM API (for CSRF cookie endpoint only) ─────────────────────────────
-const sanctumApi = axios.create({
-  baseURL: isDev ? (process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000").replace(/\/api\/v1$/, "") : "",
-  withCredentials: true,
-  xsrfCookieName: "XSRF-TOKEN",
-  xsrfHeaderName: "X-XSRF-TOKEN",
-  withXSRFToken: true,
-});
-
-export async function ensureCsrfCookie() {
-  await sanctumApi.get("/sanctum/csrf-cookie");
-}
-
-/**
- * Refresh the CSRF cookie from Sanctum and return the token value.
- * Must be called before any state-mutating request (POST/PUT/PATCH/DELETE)
- * when the XSRF-TOKEN cookie may have expired or is not available.
- */
-export async function refreshCsrfToken(): Promise<void> {
-  await sanctumApi.get("/sanctum/csrf-cookie");
-}

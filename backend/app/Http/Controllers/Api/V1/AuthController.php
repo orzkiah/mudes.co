@@ -28,9 +28,29 @@ class AuthController extends BaseController
         return $this->success(new AuthUserResource($user), 'Logged in successfully.');
     }
 
+    public function loginToken(LoginRequest $request): JsonResponse
+    {
+        $result = $this->service->loginWithToken(
+            email: $request->string('email')->toString(),
+            password: $request->string('password')->toString(),
+        );
+
+        return $this->success([
+            'user' => new AuthUserResource($result['user']),
+            'token' => $result['token'],
+        ], 'Logged in successfully.');
+    }
+
     public function logout(): JsonResponse
     {
         $this->service->logout();
+
+        return $this->success(message: 'Logged out successfully.');
+    }
+
+    public function logoutToken(): JsonResponse
+    {
+        $this->service->logoutToken();
 
         return $this->success(message: 'Logged out successfully.');
     }

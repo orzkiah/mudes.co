@@ -62,9 +62,41 @@ class AuthService
         }
     }
 
+    /**
+     * @return array{user: User, token: string}
+     *
+     * @throws AuthenticationException when credentials are invalid or the account is inactive.
+     */
+    public function loginWithToken(string $email, string $password): array
+    {
+        if (! Auth::guard('web')->attempt(['email' => $email, 'password' => $password, 'is_active' => true])) {
+            throw new AuthenticationException('These credentials do not match our records.');
+        }
+
+        /** @var User $user */
+        $user = Auth::guard('web')->user();
+
+        $user->tokens()->where('name', 'api-token')->delete();
+
+        $token = $user->createToken('api-token')->plainTextToken;
+
+        return [
+            'user' => $user,
+            'token' => $token,
+        ];
+    }
+
+    public function logoutToken(): void
+    {
+        /** @var User|null $user */
+        $user = Auth::user();
+
+        $user?->currentAccessToken()?->delete();
+    }
+
     public function currentUser(): User
     {
         /** @var User */
-        return Auth::guard('web')->user();
+        return Auth::user() ?? Auth::guard('web')->user();
     }
 }

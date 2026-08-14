@@ -1,4 +1,4 @@
-import { api, refreshCsrfToken } from "@/lib/api";
+import { api } from "@/lib/api";
 import type { ApiResponse, ApiMeta, ListParams, MediaObject } from "@/lib/api-types";
 
 export function buildQueryParams(params: ListParams): Record<string, string | number | undefined> {
@@ -82,13 +82,6 @@ export async function bulkReorder(endpoint: string, order: string[]) {
  *                   the entity form field (e.g. photoMediaId, coverMediaId).
  */
 export async function uploadMedia(file: File, collection: string): Promise<MediaObject> {
-  // ─── CSRF token refresh ───────────────────────────────────────────────────
-  // The XSRF-TOKEN cookie may have expired or be inaccessible cross-origin
-  // (port 3000 → 8000, SameSite=Lax). A fresh GET to /sanctum/csrf-cookie
-  // sets a new cookie that Axios' withXSRFToken will pick up automatically,
-  // preventing the "CSRF token mismatch" 500 error on the subsequent POST.
-  await refreshCsrfToken();
-
   const formData = new FormData();
   formData.append("file", file);
   formData.append("collection", collection);
