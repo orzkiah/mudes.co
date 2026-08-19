@@ -31,6 +31,11 @@ return Application::configure(basePath: dirname(__DIR__))
         // Sanctum SPA stateful-cookie authentication (BACKEND_ARCHITECTURE.md §10).
         $middleware->statefulApi();
 
+        // Token-based auth endpoints don't use CSRF cookies.
+        $middleware->validateCsrfTokens(except: [
+            'api/v1/auth/token/*',
+        ]);
+
         $middleware->alias([
             'role' => RoleMiddleware::class,
             'permission' => PermissionMiddleware::class,
