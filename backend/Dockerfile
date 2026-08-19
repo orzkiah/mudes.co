@@ -36,8 +36,11 @@ RUN echo "memory_limit=512M" > /usr/local/etc/php/conf.d/zz-memory-limit.ini \
 # Set permissions for storage & bootstrap/cache
 RUN chmod -R 777 storage bootstrap/cache
 
-# Expose port (Koyeb and Render will set the PORT env variable, defaulting to 8000)
+# Make startup script executable
+RUN chmod +x docker/start.sh
+
+# Expose port
 EXPOSE 8000
 
-# Start script using the dynamic PORT env variable provided by host
-CMD php artisan config:cache && php artisan route:cache && php artisan migrate --force && php artisan serve --host=0.0.0.0 --port=${PORT:-8000}
+# Use startup script instead of inline CMD
+CMD ["sh", "docker/start.sh"]
